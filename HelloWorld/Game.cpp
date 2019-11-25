@@ -274,17 +274,17 @@ void Game::KeyboardHold()
 		CreateBullet(0, 1);
 	}
 
-	if (Input::GetKey(Key::RightArrow)) {
+	else if (Input::GetKey(Key::RightArrow)) {
 
 		CreateBullet(1, 0);
 	}
 
-	if (Input::GetKey(Key::DownArrow)) {
+	else if (Input::GetKey(Key::DownArrow)) {
 
 		CreateBullet(0, -1);
 	}
 
-	if (Input::GetKey(Key::LeftArrow)) {
+	else if (Input::GetKey(Key::LeftArrow)) {
 
 		CreateBullet(-1, 0);
 	}
