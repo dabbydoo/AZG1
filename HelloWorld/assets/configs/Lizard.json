@@ -1,0 +1,31 @@
+{
+  "right_still": {
+    "Frame0": [ 241.0, 50.0, 299.0, 1.0 ],
+    "NumFrames": 1,
+    "Repeating": false,
+    "SecsPerFrame": 0.5
+  },
+  "right_walk": {
+    "Frame0": [ 1.0, 50.0, 59.0, 1.0 ],
+    "Frame1": [ 61.0, 50.0, 119.0, 1.0 ],
+    "Frame2": [ 121.0, 50.0, 179.0, 1.0 ],
+    "Frame3": [ 181.0, 50.0, 239.0, 1.0 ],
+    "NumFrames": 4,
+    "Repeating": true,
+    "SecsPerFrame": 0.1800000011920929
+  },
+  "left_still": {
+    "Frame0": [ 421.0, 50.0, 479.0, 1.0 ],
+    "NumFrames": 1,
+    "Repeating": false,
+    "SecsPerFrame": 0.10000000149011612
+  },
+  "left_walk": {
+    "Frame0": [ 481.0, 50.0, 539.0, 1.0 ],
+    "Frame1": [ 301.0, 50.0, 359.0, 1.0 ],
+    "Frame2": [ 361.0, 50.0, 419.0, 1.0 ],
+    "NumFrames": 3,
+    "Repeating": true,
+    "SecsPerFrame": 0.18000001072883606
+  }
+}

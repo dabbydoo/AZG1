@@ -1,0 +1,36 @@
+{
+  "Regular_Stance": {
+    "Frame0": [ 129.0, 43.0, 156.0, 1.0 ],
+    "NumFrames": 1,
+    "Repeating": false,
+    "SecsPerFrame": 0.10000000149011612
+  },
+  "back_facing": {
+    "Frame0": [ 1.0, 43.0, 32.0, 1.0 ],
+    "Frame1": [ 67.0, 43.0, 98.0, 1.0 ],
+    "NumFrames": 2,
+    "Repeating": true,
+    "SecsPerFrame": 0.5
+  },
+  "walking_left": {
+    "Frame0": [ 249.0, 43.0, 280.0, 1.0 ],
+    "Frame1": [ 216.0, 43.0, 247.0, 1.0 ],
+    "NumFrames": 2,
+    "Repeating": true,
+    "SecsPerFrame": 0.5
+  },
+  "walking_right": {
+    "Frame0": [ 315.0, 43.0, 346.0, 1.0 ],
+    "Frame1": [ 282.0, 43.0, 313.0, 1.0 ],
+    "NumFrames": 2,
+    "Repeating": true,
+    "SecsPerFrame": 0.5
+  },
+  "walking_straight": {
+    "Frame0": [ 67.0, 43.0, 98.0, 1.0 ],
+    "Frame1": [ 100.0, 43.0, 127.0, 1.0 ],
+    "NumFrames": 2,
+    "Repeating": true,
+    "SecsPerFrame": 0.5
+  }
+}

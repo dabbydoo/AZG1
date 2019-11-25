@@ -1,0 +1,15 @@
+{
+  "move": {
+    "Frame0": [ 81.0, 88.0, 163.0, 1.0 ],
+    "Frame1": [ 165.0, 88.0, 247.0, 1.0 ],
+    "NumFrames": 2,
+    "Repeating": true,
+    "SecsPerFrame": 0.7499999940395355
+  },
+  "still": {
+    "Frame0": [ 1.0, 88.0, 79.0, 1.0 ],
+    "NumFrames": 1,
+    "Repeating": false,
+    "SecsPerFrame": 0.6000000238418579
+  }
+}
