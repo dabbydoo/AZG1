@@ -3,6 +3,8 @@
 
 #include "BackEnd.h"
 #include "HelloWorld.h"
+#include "bullet.h"
+
 //Our main class for running our game
 class Game
 {
@@ -67,6 +69,9 @@ public:
 	void OpenRight();
 	void OpenBottom();
 
+	//Create Bullet
+	void CreateBullet(int xDir, int yDir);
+	void UpdateBullet();
 
 private:
 	//The window
@@ -92,6 +97,9 @@ private:
 	bool m_motion = false;
 	bool m_click = false;
 	bool m_wheel = false;
+
+	//Bullet
+	std::vector<Bullet> m_bulletList;
 };
 
 
