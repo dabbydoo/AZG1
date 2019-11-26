@@ -100,6 +100,12 @@ private:
 
 	//Bullet
 	std::vector<Bullet> m_bulletList;
+
+	//Bullet fire rate
+	int m_fireRate = 25;
+	int m_rateCounter = 0;
+	int m_FiringDir = 0;
+
 };
 
 

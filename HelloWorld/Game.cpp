@@ -269,24 +269,46 @@ void Game::KeyboardHold()
 		auto& anim = animControllerr.GetAnimation(3);
 		*/
 	}
-	if (Input::GetKey(Key::UpArrow)) {
-
-		CreateBullet(0, 1);
+	if ((Input::GetKey(Key::UpArrow)) && (m_FiringDir == 1)) {
+		m_rateCounter++;
+		
+		if (m_rateCounter > m_fireRate)
+		{
+			CreateBullet(0, 1);
+			m_rateCounter = 0;
+		}
+	
 	}
 
-	else if (Input::GetKey(Key::RightArrow)) {
+	if ((Input::GetKey(Key::RightArrow)) && (m_FiringDir == 2)) {
+		m_rateCounter++;
 
-		CreateBullet(1, 0);
+		if (m_rateCounter > m_fireRate)
+		{
+			CreateBullet(1, 0);
+			m_rateCounter = 0;
+		}
 	}
 
-	else if (Input::GetKey(Key::DownArrow)) {
+	if ((Input::GetKey(Key::DownArrow)) && (m_FiringDir == 3)) {
+		m_rateCounter++;
 
-		CreateBullet(0, -1);
+		if (m_rateCounter > m_fireRate)
+		{
+			CreateBullet(0, -1);
+			m_rateCounter = 0;
+		}
+		
 	}
 
-	else if (Input::GetKey(Key::LeftArrow)) {
+	if ((Input::GetKey(Key::LeftArrow)) && (m_FiringDir == 4)) {
+		m_rateCounter++;
 
-		CreateBullet(-1, 0);
+		if (m_rateCounter > m_fireRate)
+		{
+			CreateBullet(-1, 0);
+			m_rateCounter = 0;
+		}		
 	}
 	//m_register->get<Transform>(EntityIdentifier::MainPlayer()).SetPositionX(position.x);
 	
@@ -342,6 +364,27 @@ void Game::KeyboardDown()
 		//animControllerr.SetActiveAnim(3);
 	}
 
+	//Bullet
+	if (Input::GetKeyDown(Key::UpArrow))
+	{
+			m_FiringDir = 1;
+	}
+
+	if (Input::GetKeyDown(Key::RightArrow))
+	{
+			m_FiringDir = 2;
+	}
+
+	if (Input::GetKeyDown(Key::DownArrow))
+	{
+			m_FiringDir = 3;
+	}
+
+	if (Input::GetKeyDown(Key::LeftArrow))
+	{
+			m_FiringDir = 4;
+	}
+
 
 	
 }
@@ -358,10 +401,27 @@ void Game::KeyboardUp()
 		m_guiActive = !m_guiActive;
 	}
 
-	if (Input::GetKeyUp(Key::F4))
+	
+	if (Input::GetKeyUp(Key::UpArrow))
 	{
-		printf("F4 Key Released\n");
+		
 	}
+
+	if (Input::GetKeyUp(Key::RightArrow))
+	{
+		
+	}
+
+	if (Input::GetKeyUp(Key::DownArrow))
+	{
+		
+	}
+
+	if (Input::GetKeyUp(Key::LeftArrow))
+	{
+		
+	}
+
 }
 
 void Game::MouseMotion(SDL_MouseMotionEvent evnt)
