@@ -9,6 +9,7 @@
 #include "Transform.h"
 #include "EntityIdentifier.h"
 #include "HealthBar.h"
+#include "PhysicsBody.h"
 
 class ECS abstract
 {

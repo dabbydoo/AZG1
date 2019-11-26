@@ -245,22 +245,22 @@ void Game::KeyboardHold()
 	if (Input::GetKey(Key::W)) {
 		//m_register->get<Transform>(EntityIdentifier::MainPlayer()).SetPositionY(++position.y + (speed * Timer::deltaTime));
 		m_register->get<Transform>(EntityIdentifier::MainPlayer()).SetPositionY((position.y+0.25f) + (speed * Timer::deltaTime));
-		animControllerr.SetActiveAnim(1);
+	
 	}
 	if (Input::GetKey(Key::S)) {
 		//m_register->get<Transform>(EntityIdentifier::MainPlayer()).SetPositionY(--position.y - (speed * Timer::deltaTime));
 		m_register->get<Transform>(EntityIdentifier::MainPlayer()).SetPositionY((position.y - 0.25f) - (speed * Timer::deltaTime));
-		animControllerr.SetActiveAnim(0);
+		
 	}
 	if (Input::GetKey(Key::A)) {
 		//m_register->get<Transform>(EntityIdentifier::MainPlayer()).SetPositionX(--position.x - (speed * Timer::deltaTime));
 		m_register->get<Transform>(EntityIdentifier::MainPlayer()).SetPositionX((position.x - 0.25f) - (speed * Timer::deltaTime));
-		animControllerr.SetActiveAnim(2);
+	
 	}
 	if (Input::GetKey(Key::D)) {
 		//m_register->get<Transform>(EntityIdentifier::MainPlayer()).SetPositionX(++position.x + (speed * Timer::deltaTime));
 		m_register->get<Transform>(EntityIdentifier::MainPlayer()).SetPositionX((position.x + 0.25f) + (speed * Timer::deltaTime));
-		animControllerr.SetActiveAnim(3);
+		
 		/*
 		HelloWorld* scene = (HelloWorld*)m_activeScene;
 		auto entitySpaceRanger = scene->SpaceRanger();
@@ -272,6 +272,8 @@ void Game::KeyboardHold()
 	if ((Input::GetKey(Key::UpArrow)) && (m_FiringDir == 1)) {
 		m_rateCounter++;
 		
+		animControllerr.SetActiveAnim(1);
+
 		if (m_rateCounter > m_fireRate)
 		{
 			CreateBullet(0, 1);
@@ -282,7 +284,8 @@ void Game::KeyboardHold()
 
 	if ((Input::GetKey(Key::RightArrow)) && (m_FiringDir == 2)) {
 		m_rateCounter++;
-
+		
+		animControllerr.SetActiveAnim(3);
 		if (m_rateCounter > m_fireRate)
 		{
 			CreateBullet(1, 0);
@@ -292,7 +295,7 @@ void Game::KeyboardHold()
 
 	if ((Input::GetKey(Key::DownArrow)) && (m_FiringDir == 3)) {
 		m_rateCounter++;
-
+		animControllerr.SetActiveAnim(0);
 		if (m_rateCounter > m_fireRate)
 		{
 			CreateBullet(0, -1);
@@ -303,7 +306,7 @@ void Game::KeyboardHold()
 
 	if ((Input::GetKey(Key::LeftArrow)) && (m_FiringDir == 4)) {
 		m_rateCounter++;
-
+		animControllerr.SetActiveAnim(2);
 		if (m_rateCounter > m_fireRate)
 		{
 			CreateBullet(-1, 0);
