@@ -88,6 +88,13 @@ inline void to_json(nlohmann::json& j, const Scene& scene)
 			j[std::to_string(counter)]["Transform"] = scene.GetScene()->get<Transform>(entity);
 		}
 
+		if (identity & EntityIdentifier::PhysicsBit())
+		{
+
+			//Stores the transform
+			j[std::to_string(counter)]["PhysicsBody"] = scene.GetScene()->get<PhysicsBody>(entity);                                       //
+		}
+
 		//If you create new classes that you add as a component,
 		//you need to #1 add a static (unique) bit for that class
 		//And then add more if statements after this point
@@ -204,6 +211,15 @@ inline void from_json(const nlohmann::json& j, Scene& scene)
 			reg.get<Transform>(entity) = j["Scene"][std::to_string(i)]["Transform"];
 
 			//Transforms require no further initialization
+		}
+
+		if (identity & EntityIdentifier::PhysicsBit())
+		{
+			//Adds transform to the entity
+			reg.assign<PhysicsBody>(entity);
+			//Sets the transform to the saved version
+			reg.get<PhysicsBody>(entity) = j["Scene"][std::to_string(i)]["PhysicsBody"];                                               //
+
 		}
 
 		if (identity & EntityIdentifier::HealthBarBit()) {
