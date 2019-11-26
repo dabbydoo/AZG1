@@ -1,53 +1,17 @@
-﻿  AnimationController.cpp
-  AnimationSystem.cpp
-  BackEnd.cpp
-  BloomEffect.cpp
-  Camera.cpp
-  CameraSystem.cpp
+﻿  BackEnd.cpp
   ECS.cpp
   EffectManager.cpp
-  EntityIdentifier.cpp
-  Framebuffer.cpp
   Game.cpp
-  GrainEffect.cpp
-  GreyscaleEffect.cpp
-  HealthBar.cpp
+C:\Users\farha\AZG1\HelloWorld\Game.cpp(103,6): warning C4101: 'maparray': unreferenced local variable
+C:\Users\farha\AZG1\HelloWorld\Game.cpp(623,69): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\farha\AZG1\HelloWorld\Game.cpp(624,69): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\farha\AZG1\HelloWorld\Game.cpp(625,69): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\farha\AZG1\HelloWorld\Game.cpp(648,86): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   HelloWorld.cpp
-  imgui.cpp
-  imgui_demo.cpp
-  imgui_draw.cpp
-  imgui_impl.cpp
-  imgui_widgets.cpp
-  Generating Code...
-  Compiling...
-  Input.cpp
-  JSON.cpp
-  main.cpp
-  PixelateEffect.cpp
-  PostEffect.cpp
   RenderingSystem.cpp
   Scene.cpp
   SceneEditor.cpp
-  Selectable.cpp
-  SelectiveColorEffect.cpp
-  SepiaEffect.cpp
-  Shader.cpp
-  Sprite.cpp
-  Texture.cpp
-  TextureManager.cpp
-  Timer.cpp
-  Transform.cpp
-  UI.cpp
-  VertexManager.cpp
-  VignetteEffect.cpp
+  main.cpp
   Generating Code...
-  Compiling...
-  Window.cpp
-  XInput.cpp
-  Generating Code...
-C:\Users\James\Desktop\Back Up\HelloWorld\Game.cpp(103,6): warning C4101:  'maparray': unreferenced local variable
-SOIL_ext.lib(etc1_utils.obj) : warning LNK4099: PDB 'soil2-debug.pdb' was not found with 'SOIL_ext.lib(etc1_utils.obj)' or at 'C:\Users\James\Desktop\Back Up\x64\Debug\soil2-debug.pdb'; linking object as if no debug info
-SOIL_ext.lib(image_DXT.obj) : warning LNK4099: PDB 'soil2-debug.pdb' was not found with 'SOIL_ext.lib(image_DXT.obj)' or at 'C:\Users\James\Desktop\Back Up\x64\Debug\soil2-debug.pdb'; linking object as if no debug info
-SOIL_ext.lib(image_helper.obj) : warning LNK4099: PDB 'soil2-debug.pdb' was not found with 'SOIL_ext.lib(image_helper.obj)' or at 'C:\Users\James\Desktop\Back Up\x64\Debug\soil2-debug.pdb'; linking object as if no debug info
-SOIL_ext.lib(SOIL2.obj) : warning LNK4099: PDB 'soil2-debug.pdb' was not found with 'SOIL_ext.lib(SOIL2.obj)' or at 'C:\Users\James\Desktop\Back Up\x64\Debug\soil2-debug.pdb'; linking object as if no debug info
-  HelloWorld.vcxproj -> C:\Users\James\Desktop\Back Up\x64\Debug\HelloWorld.exe
+C:\Users\farha\AZG1\HelloWorld\Game.cpp(649,86): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  HelloWorld.vcxproj -> C:\Users\farha\AZG1\x64\Debug\HelloWorld.exe

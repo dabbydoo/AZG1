@@ -158,6 +158,7 @@
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="JSON.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="PhysicsBody.cpp" />
     <ClCompile Include="PixelateEffect.cpp" />
     <ClCompile Include="PostEffect.cpp" />
     <ClCompile Include="RenderingSystem.cpp" />
@@ -205,6 +206,7 @@
     <ClInclude Include="Input.h" />
     <ClInclude Include="JSON.h" />
     <ClInclude Include="Matrix.h" />
+    <ClInclude Include="PhysicsBody.h" />
     <ClInclude Include="PixelateEffect.h" />
     <ClInclude Include="PostEffect.h" />
     <ClInclude Include="RenderingSystem.h" />
