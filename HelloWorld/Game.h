@@ -73,6 +73,9 @@ public:
 	void CreateBullet(int xDir, int yDir);
 	void UpdateBullet();
 
+	//Bullet collision to border
+	bool isHitBorder(Bullet bullet);
+
 private:
 	//The window
 	Window *m_window = nullptr;
