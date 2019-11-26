@@ -1,17 +1,9 @@
-﻿  BackEnd.cpp
-  ECS.cpp
-  EffectManager.cpp
-  Game.cpp
-C:\Users\farha\AZG1\HelloWorld\Game.cpp(103,6): warning C4101: 'maparray': unreferenced local variable
-C:\Users\farha\AZG1\HelloWorld\Game.cpp(623,69): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\farha\AZG1\HelloWorld\Game.cpp(624,69): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\farha\AZG1\HelloWorld\Game.cpp(625,69): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\farha\AZG1\HelloWorld\Game.cpp(648,86): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  HelloWorld.cpp
-  RenderingSystem.cpp
-  Scene.cpp
-  SceneEditor.cpp
-  main.cpp
-  Generating Code...
-C:\Users\farha\AZG1\HelloWorld\Game.cpp(649,86): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  HelloWorld.vcxproj -> C:\Users\farha\AZG1\x64\Debug\HelloWorld.exe
+﻿  Game.cpp
+C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\HelloWorld\Game.cpp(106,26): warning C4305:  'initializing': truncation from 'double' to 'float'
+C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\HelloWorld\Game.cpp(124,6): warning C4101:  'maparray': unreferenced local variable
+C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\HelloWorld\Game.cpp(644,69): warning C4244:  '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\HelloWorld\Game.cpp(645,69): warning C4244:  '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\HelloWorld\Game.cpp(646,69): warning C4244:  '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\HelloWorld\Game.cpp(669,86): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\HelloWorld\Game.cpp(670,86): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
+  HelloWorld.vcxproj -> C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\x64\Debug\HelloWorld.exe

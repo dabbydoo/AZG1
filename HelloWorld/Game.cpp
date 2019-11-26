@@ -98,6 +98,27 @@ bool Game::Run()
 
 void Game::Update()
 {
+	bool animationtest = true;
+
+	HelloWorld* scene = (HelloWorld*)m_activeScene;
+	auto entity = scene->Beetle();
+	auto& animController = ECS::GetComponent<AnimationController>(entity);
+	static float try2 = 0.35;
+
+	vec3 Beetleposition = m_register->get<Transform>(entity).GetPosition();
+
+	
+		
+			animController.SetActiveAnim(0);
+			auto& anim = animController.GetAnimation(0);
+			
+			m_register->get<Transform>(entity).SetPositionX(Beetleposition.x - try2);
+			
+		
+		
+	if (Beetleposition.x >=130 || Beetleposition.x <=-150) {
+		try2 = try2* (-1);
+	}
 	
 	int x{ 3 }, y{3};
 	int maparray[5][5];

@@ -8,6 +8,8 @@ public:
 	void InitScene(float windowWidth, float windowHeight) override;
 	int m_entitySpaceRanger;
 	int m_entitybullet;
+	int m_BeetleEntity;
 	int SpaceRanger();
 	int bullet();
+	int Beetle();
 };

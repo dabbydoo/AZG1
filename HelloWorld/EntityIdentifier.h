@@ -79,6 +79,7 @@ private:
 	static unsigned int m_physicsBit;
 	static unsigned int m_healthBarBit;
 	static unsigned int m_entitybullet;
+	static unsigned int m_BeetleEntity;
 };
 
 #ifndef __ENTITYIDENTIFIERJSON_H__

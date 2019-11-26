@@ -11,6 +11,8 @@ unsigned int EntityIdentifier::m_linkBit			= 0x10000;
 unsigned int EntityIdentifier::m_physicsBit			= 0x100000;
 unsigned int EntityIdentifier::m_healthBarBit       = 0x1000000;
 unsigned int EntityIdentifier::m_entitybullet       = 0x10000000;
+unsigned int EntityIdentifier::m_BeetleEntity = 0x100000000;
+
 
 
 //(having just camera means the bit = 1)

@@ -291,6 +291,8 @@ void HelloWorld::InitScene(float windowWidth, float windowHeight)
 		unsigned int bitHolder = EntityIdentifier::SpriteBit() | EntityIdentifier::TransformBit() | EntityIdentifier::AnimationBit();
 		ECS::SetUpIdentifier(entityB, bitHolder, "Beetle Entity");
 
+		m_BeetleEntity = entityB;
+
 	}
 	
 	{
@@ -414,6 +416,10 @@ int HelloWorld::SpaceRanger()
 int HelloWorld::bullet()
 {
 	return m_entitybullet;
+}
+int HelloWorld::Beetle()
+{
+	return m_BeetleEntity;
 }
 void function()
 {
