@@ -102,7 +102,7 @@ void Game::Update()
 	int x{ 3 }, y{3};
 	int maparray[5][5];
 	vec3 position = m_register->get<Transform>(EntityIdentifier::MainPlayer()).GetPosition();
-//walls	
+	//walls	
 	//Game::CloseTop();
 	//Game::CloseRight();
 	//Game::CloseLeft();
@@ -336,7 +336,6 @@ void Game::KeyboardDown()
 		printf("F4 Key Down\n");
 	}
 
-
 	
 	auto& animControllerr = ECS::GetComponent<AnimationController>(2);
 
@@ -439,9 +438,7 @@ void Game::MouseMotion(SDL_MouseMotionEvent evnt)
 	}
 
 	//Resets the enabled flag
-	m_motion = false;
-
-	
+	m_motion = false;	
 }
 
 void Game::MouseClick(SDL_MouseButtonEvent evnt)
@@ -586,11 +583,10 @@ void Game::OpenBottom()
 
 void Game::CreateBullet(int xDir, int yDir)
 {
-
 	Bullet bullet;
 	//Power up animataion file
 	auto bulletSprite = File::LoadJSON("Bullet.json");
-
+	 
 	//Creates entity
 	auto entity = ECS::CreateEntity();
 
@@ -609,23 +605,18 @@ void Game::CreateBullet(int xDir, int yDir)
 	//Sets active animation
 	animController.SetActiveAnim(0);
 
-	//Gets first animation
-
 	ECS::GetComponent<Sprite>(entity).LoadSprite(fileName, 5, 5, true, &animController);
 	ECS::GetComponent<Sprite>(entity).SetUVs(vec2(14.f, 34.f), vec2(30.f, 11.f));
-	//ECS::GetComponent<Transform>(entity).SetPosition(vec3(25.f, 25.f, 5.f));
 
 	//Set bullet initial position based on current player position
 	ECS::GetComponent<Transform>(entity).SetPositionX(ECS::GetComponent<Transform>(2).GetPosition().x);
 	ECS::GetComponent<Transform>(entity).SetPositionY(ECS::GetComponent<Transform>(2).GetPosition().y);
 	ECS::GetComponent<Transform>(entity).SetPositionZ(ECS::GetComponent<Transform>(2).GetPosition().z);
 
+	//Record bullet ID
+	bullet.bulletID = entity;
 
-
-
-	//	ECS::GetComponent<Transform>(entity).SetPosition(ECS::GetComponent<Transform>(EntityIdentifier::MainPlayer()).GetPosition());
-
-		//Record initial bullet position in vector
+	//Record initial bullet position in vector
 	bullet.xInitPos = ECS::GetComponent<Transform>(entity).GetPositionX();
 	bullet.yInitPos = ECS::GetComponent<Transform>(entity).GetPositionY();
 	bullet.zInitPos = ECS::GetComponent<Transform>(entity).GetPositionZ();
@@ -639,8 +630,6 @@ void Game::CreateBullet(int xDir, int yDir)
 	//Sets up the Identifier
 	unsigned int bitHolder = EntityIdentifier::SpriteBit() | EntityIdentifier::TransformBit() | EntityIdentifier::AnimationBit();
 	ECS::SetUpIdentifier(entity, bitHolder, "Bullet");
-
-
 }
 
 void Game::UpdateBullet()
@@ -650,15 +639,27 @@ void Game::UpdateBullet()
 		//Update Vector
 		m_bulletList[i].xPos = m_bulletList[i].xPos + m_bulletList[i].xDir;
 		m_bulletList[i].yPos = m_bulletList[i].yPos + m_bulletList[i].yDir;
-
+		
 		//Update bullet position on screen
-		ECS::GetComponent<Transform>(8 + i).SetPositionX(m_bulletList[i].xPos);
-		ECS::GetComponent<Transform>(8 + i).SetPositionY(m_bulletList[i].yPos);
-
-		/*if ((m_bulletList[i].xPos - m_bulletList[i].xInitPos) > 20)
+		
+		ECS::GetComponent<Transform>(m_bulletList[i].bulletID).SetPositionX(m_bulletList[i].xPos);
+		ECS::GetComponent<Transform>(m_bulletList[i].bulletID).SetPositionY(m_bulletList[i].yPos);
+		
+		if (isHitBorder(m_bulletList[i]))
 		{
-			ECS::DestroyEntity(6 + i);
+			ECS::DestroyEntity(m_bulletList[i].bulletID);
 			m_bulletList.erase(m_bulletList.begin() + i);
-		}*/
+			
+		}
 	}
+}
+
+bool Game::isHitBorder(Bullet bullet)
+{
+	if (bullet.xPos > 145 || bullet.xPos < -148 || bullet.yPos > 70 || bullet.yPos < -71)
+	{
+		return true;
+	}
+	else
+		return false;
 }
