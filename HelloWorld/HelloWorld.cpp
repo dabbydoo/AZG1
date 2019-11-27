@@ -242,7 +242,7 @@ void HelloWorld::InitScene(float windowWidth, float windowHeight)
 			
 		ECS::GetComponent<Sprite>(entitySpaceRanger).LoadSprite(SpaceRanger, 18 / 3, 18 / 3, true, &animControllerr);
 		//ECS::GetComponent<Sprite>(entitySpaceRanger).SetUVs(vec2(14.f, 34.f), vec2(30.f, 11.f));
-		ECS::GetComponent<Transform>(entitySpaceRanger).SetPosition(vec3(-25.f, -25.f, 25.f));
+		//ECS::GetComponent<Transform>(entitySpaceRanger).SetPosition(vec3(-25.f, -25.f, 25.f));
 		
 		//Setup up the Identifier
 		unsigned int bitHolder = EntityIdentifier::SpriteBit() | EntityIdentifier::TransformBit() | EntityIdentifier::AnimationBit();
