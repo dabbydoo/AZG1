@@ -63,6 +63,23 @@ void HelloWorld::InitScene(float windowWidth, float windowHeight)
 		unsigned int bitHolder = 0x0;
 		ECS::SetUpIdentifier(entityBack, bitHolder, "Temp Entity");
 	}
+
+	/*{
+		//Creates entity Map
+		auto entityLoad = ECS::CreateEntity();
+		//Add components
+		ECS::AttachComponent<Sprite>(entityLoad);
+		ECS::AttachComponent<Transform>(entityLoad);
+
+		//Sets up components
+		std::string MenuScreen = "loading.jpg"; //400, 200
+		ECS::GetComponent<Sprite>(entityLoad).LoadSprite(MenuScreen, 380, 200);
+
+		ECS::GetComponent<Transform>(entityLoad).SetPosition(vec3(0.f, 0.f, 14.f));
+		//Setup up the Identifier
+		unsigned int bitHolder = 0x0;
+		ECS::SetUpIdentifier(entityLoad, bitHolder, "Loading Menu");
+	}*/
 	
 	/*
 	{

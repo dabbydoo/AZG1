@@ -29,6 +29,13 @@ Game::~Game()
 
 void Game::InitGame()
 {
+	bool menu = true;
+	
+	/*while(menu = true) {
+		
+	}*/
+
+
 	//Scene names and clear colors
 	m_name = "Hello World";
 	m_clearColor = vec4(0.15f, 0.33f, 0.58f, 1.f);
