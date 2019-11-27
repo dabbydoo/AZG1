@@ -106,18 +106,48 @@ void Game::Update()
 	static float try2 = 0.35;
 
 	vec3 Beetleposition = m_register->get<Transform>(entity).GetPosition();
+	
+	animController.SetActiveAnim(0);
+	auto& anim = animController.GetAnimation(0);
+
+	m_register->get<Transform>(entity).SetPositionX(Beetleposition.x + 0.25);
+	
+	if (Beetleposition.x >= 135) {
+		m_register->get<Transform>(entity).SetPositionX(Beetleposition.x = -140);
+	}
+	
+	/*if (Beetleposition.z == 20) {
+		
+		m_register->get<Transform>(entity).SetPositionX(Beetleposition.x + 0.25);
+		if (Beetleposition.x >= 130) {
+			Beetleposition.z == 21;	
+		}
+		else {
+
+		}
+	
+	}
+	else if (Beetleposition.z == 21) {
+		
+		m_register->get<Transform>(entity).SetPositionX(Beetleposition.x - 0.25);
+		if (Beetleposition.x <= -130) {
+			Beetleposition.z == 20;
+
+		}
+		else {
+
+		}
+	}*/
 
 	
+	
 		
-			animController.SetActiveAnim(0);
-			auto& anim = animController.GetAnimation(0);
-			
-			m_register->get<Transform>(entity).SetPositionX(Beetleposition.x - try2);
 			
 		
 		
-	if (Beetleposition.x >=130 || Beetleposition.x <=-150) {
-		try2 = try2* (-1);
+	if (Beetleposition.x <=-150) {
+
+		//try2 = try2* (-1);
 	}
 	
 	int x{ 3 }, y{3};
