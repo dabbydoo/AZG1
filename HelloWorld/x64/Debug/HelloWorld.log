@@ -1,9 +1,2 @@
-﻿  Game.cpp
-C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\HelloWorld\Game.cpp(145,6): warning C4101:  'maparray': unreferenced local variable
-C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\HelloWorld\Game.cpp(251,26): warning C4305:  'initializing': truncation from 'double' to 'float'
-C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\HelloWorld\Game.cpp(705,69): warning C4244:  '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\HelloWorld\Game.cpp(706,69): warning C4244:  '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\HelloWorld\Game.cpp(707,69): warning C4244:  '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\HelloWorld\Game.cpp(730,86): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\HelloWorld\Game.cpp(731,86): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
+﻿  HelloWorld.cpp
   HelloWorld.vcxproj -> C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\x64\Debug\HelloWorld.exe

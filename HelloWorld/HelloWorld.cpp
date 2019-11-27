@@ -6,7 +6,7 @@
 HelloWorld::HelloWorld(std::string name)
  :Scene(name)
 {
-
+	
 }
 
 void HelloWorld::InitScene(float windowWidth, float windowHeight)
@@ -48,6 +48,8 @@ void HelloWorld::InitScene(float windowWidth, float windowHeight)
 
 	
 	{
+		
+		
 		//Creates entity Map
 		auto entityBack = ECS::CreateEntity();
 		//Add components
@@ -57,12 +59,14 @@ void HelloWorld::InitScene(float windowWidth, float windowHeight)
 		//Sets up components
 		std::string BackGround = "Middle.png"; //400, 200
 		ECS::GetComponent<Sprite>(entityBack).LoadSprite(BackGround, 380, 200);
-
 		ECS::GetComponent<Transform>(entityBack).SetPosition(vec3(0.f, 0.f, 13.f));
+		
 		//Setup up the Identifier
 		unsigned int bitHolder = 0x0;
 		ECS::SetUpIdentifier(entityBack, bitHolder, "Temp Entity");
 	}
+
+	
 
 	/*{
 		//Creates entity Map
@@ -72,13 +76,15 @@ void HelloWorld::InitScene(float windowWidth, float windowHeight)
 		ECS::AttachComponent<Transform>(entityLoad);
 
 		//Sets up components
-		std::string MenuScreen = "loading.jpg"; //400, 200
+		std::string MenuScreen = "TitleScreen.jpg"; //400, 200
 		ECS::GetComponent<Sprite>(entityLoad).LoadSprite(MenuScreen, 380, 200);
 
-		ECS::GetComponent<Transform>(entityLoad).SetPosition(vec3(0.f, 0.f, 14.f));
+		ECS::GetComponent<Transform>(entityLoad).SetPosition(vec3(0.f, 0.f, 50.f));
 		//Setup up the Identifier
 		unsigned int bitHolder = 0x0;
 		ECS::SetUpIdentifier(entityLoad, bitHolder, "Loading Menu");
+
+		m_entityMenu = entityLoad;
 	}*/
 	
 	/*
@@ -437,6 +443,10 @@ int HelloWorld::bullet()
 int HelloWorld::Beetle()
 {
 	return m_BeetleEntity;
+}
+int HelloWorld::Menu()
+{
+	return m_entityMenu;
 }
 void function()
 {

@@ -29,15 +29,15 @@ Game::~Game()
 
 void Game::InitGame()
 {
-	bool menu = true;
+	/*bool menu = true;
 	
-	/*while(menu = true) {
+	if (menu = true) {
 		
 	}*/
 
 
 	//Scene names and clear colors
-	m_name = "Hello World";
+	m_name = "Risk of Rain 2D";
 	m_clearColor = vec4(0.15f, 0.33f, 0.58f, 1.f);
 
 	//Initializes the backend
@@ -106,40 +106,6 @@ bool Game::Run()
 void Game::Update()
 {
 	
-	
-	/*if (Beetleposition.z == 20) {
-		
-		m_register->get<Transform>(entity).SetPositionX(Beetleposition.x + 0.25);
-		if (Beetleposition.x >= 130) {
-			Beetleposition.z == 21;	
-		}
-		else {
-
-		}
-	
-	}
-	else if (Beetleposition.z == 21) {
-		
-		m_register->get<Transform>(entity).SetPositionX(Beetleposition.x - 0.25);
-		if (Beetleposition.x <= -130) {
-			Beetleposition.z == 20;
-
-		}
-		else {
-
-		}
-	}*/
-
-	
-	
-		
-			
-		
-		
-	/*if (Beetleposition.x <=-150) {
-
-		try2 = try2* (-1);
-	}*/
 	
 	int x{ 3 }, y{3};
 	int maparray[5][5];
