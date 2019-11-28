@@ -76,6 +76,10 @@ public:
 	void CreateBullet(int xDir, int yDir);
 	void UpdateBullet();
 
+	//Create Explosion
+	void CreateExplosion(int xPos, int yPos);
+	void UpdateExplosion();
+
 	//Bullet collision to border
 	bool isHitBorder(Bullet bullet);
 
@@ -111,6 +115,9 @@ private:
 	int m_fireRate = 25;
 	int m_rateCounter = 0;
 	int m_FiringDir = 0;
+
+	//Fireball
+	std::vector<Explosion> m_fireballList;
 
 	//Room coord
 	int m_xMap = 3;

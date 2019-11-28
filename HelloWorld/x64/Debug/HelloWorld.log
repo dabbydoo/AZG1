@@ -1,2 +1,11 @@
-﻿  HelloWorld.cpp
-  HelloWorld.vcxproj -> C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\x64\Debug\HelloWorld.exe
+﻿  Game.cpp
+C:\Users\prana\Documents\repos\AZG1\HelloWorld\Game.cpp(109,6): warning C4101:  'mapArray': unreferenced local variable
+C:\Users\prana\Documents\repos\AZG1\HelloWorld\Game.cpp(267,26): warning C4305:  'initializing': truncation from 'double' to 'float'
+C:\Users\prana\Documents\repos\AZG1\HelloWorld\Game.cpp(726,65): warning C4244:  '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\prana\Documents\repos\AZG1\HelloWorld\Game.cpp(727,65): warning C4244:  '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\prana\Documents\repos\AZG1\HelloWorld\Game.cpp(728,65): warning C4244:  '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\prana\Documents\repos\AZG1\HelloWorld\Game.cpp(749,86): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\prana\Documents\repos\AZG1\HelloWorld\Game.cpp(750,86): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\prana\Documents\repos\AZG1\HelloWorld\Game.cpp(791,62): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\prana\Documents\repos\AZG1\HelloWorld\Game.cpp(791,56): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
+  HelloWorld.vcxproj -> C:\Users\prana\Documents\repos\AZG1\x64\Debug\HelloWorld.exe

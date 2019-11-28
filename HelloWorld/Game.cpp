@@ -121,6 +121,9 @@ void Game::Update()
 
 	//Update bullet position
 	UpdateBullet();
+
+	//Update Explosion
+	UpdateExplosion();
 	
 	auto& animControllerr = ECS::GetComponent<AnimationController>(1);
 
@@ -719,13 +722,11 @@ void Game::CreateBullet(int xDir, int yDir)
 	//Record bullet ID
 	bullet.bulletID = entity;
 
-	//Record initial bullet position in vector
-	bullet.xInitPos = ECS::GetComponent<Transform>(entity).GetPositionX();
-	bullet.yInitPos = ECS::GetComponent<Transform>(entity).GetPositionY();
-	bullet.zInitPos = ECS::GetComponent<Transform>(entity).GetPositionZ();
-	bullet.xPos = bullet.xInitPos;
-	bullet.yPos = bullet.yInitPos;
-	bullet.zPos = bullet.zInitPos;
+	//Record bullet position in vector
+	bullet.xPos = ECS::GetComponent<Transform>(entity).GetPositionX();
+	bullet.yPos = ECS::GetComponent<Transform>(entity).GetPositionY();
+	bullet.zPos = ECS::GetComponent<Transform>(entity).GetPositionZ();
+
 	bullet.xDir = xDir;
 	bullet.yDir = yDir;
 	m_bulletList.push_back(bullet);
@@ -750,9 +751,74 @@ void Game::UpdateBullet()
 		
 		if (isHitBorder(m_bulletList[i]))
 		{
+				
 			ECS::DestroyEntity(m_bulletList[i].bulletID);
+			CreateExplosion(m_bulletList[i].xPos, m_bulletList[i].yPos);
 			m_bulletList.erase(m_bulletList.begin() + i);
 			
+		}
+	}
+}
+
+void Game::CreateExplosion(int xPos, int yPos)
+{
+	Explosion explosion;
+
+	//Fire Ball animation file
+	auto explosionSprite = File::LoadJSON("Fire_ball.json");
+
+	//Creates entity Lizard
+	auto entity = ECS::CreateEntity();
+
+	//Add components
+	ECS::AttachComponent<Sprite>(entity);
+	ECS::AttachComponent<Transform>(entity);
+	ECS::AttachComponent<AnimationController>(entity);
+
+	//Sets up components
+	std::string Fire = "Fire_ball.png";
+	auto& animController = ECS::GetComponent<AnimationController>(entity);
+	animController.InitUVs(Fire);
+
+	//Adds first Animation
+	animController.AddAnimation(explosionSprite["burn"]);
+
+	//Set first anitmation
+	animController.SetActiveAnim(0);
+
+	ECS::GetComponent<Sprite>(entity).LoadSprite(Fire, 8, 8, true, &animController);
+	ECS::GetComponent<Sprite>(entity).SetUVs(vec2(1.f, 19.f), vec2(19.f, 1.f));
+	ECS::GetComponent<Transform>(entity).SetPosition(vec3(xPos, yPos, 51.f));
+
+	//Record explosion ID
+	explosion.explosionID = entity;
+
+
+	//Record the creating time
+	explosion.beginTime = clock();
+
+	//Record explosion position in vector
+	explosion.xPos = xPos;
+	explosion.yPos = yPos;
+	explosion.zPos = 51;
+
+	//Adds to vector
+	m_fireballList.push_back(explosion);
+
+	//Setup up the Identifier
+	unsigned int bitHolder = EntityIdentifier::SpriteBit() | EntityIdentifier::TransformBit() | EntityIdentifier::AnimationBit();
+	ECS::SetUpIdentifier(entity, bitHolder, "Explosion");
+		
+}
+
+void Game::UpdateExplosion()
+{
+	for (int i = 0; i < m_fireballList.size(); i++)
+	{
+		if ((float(clock() - m_fireballList[i].beginTime)/CLOCKS_PER_SEC > .3))
+		{
+			ECS::DestroyEntity(m_fireballList[i].explosionID);
+			m_fireballList.erase(m_fireballList.begin() + i);
 		}
 	}
 }

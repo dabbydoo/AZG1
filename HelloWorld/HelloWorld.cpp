@@ -270,7 +270,7 @@ void HelloWorld::InitScene(float windowWidth, float windowHeight)
 	}
 	
 	{
-		//Bullets
+		/*//Bullets
 		auto Moving = File::LoadJSON("Bullet.json");
 
 		//Creates entity
@@ -313,7 +313,7 @@ void HelloWorld::InitScene(float windowWidth, float windowHeight)
 		//ECS::SetIsMainPlayer(Moving, true);
 
 		//m_entitybullet = Moving;
-
+		*/
 	}
 	
 	
@@ -430,41 +430,6 @@ void HelloWorld::InitScene(float windowWidth, float windowHeight)
 		//Setup up the Identifier
 		unsigned int bitHolder = EntityIdentifier::SpriteBit() | EntityIdentifier::TransformBit() | EntityIdentifier::AnimationBit();
 		ECS::SetUpIdentifier(entityBo, bitHolder, "Boss Entity");
-	}
-	
-	{
-		//Fire Ball animation file
-		auto Moving = File::LoadJSON("Fire_ball.json");
-
-		//Creates entity Lizard
-		auto entity = ECS::CreateEntity();
-
-		//Add components
-		ECS::AttachComponent<Sprite>(entity);
-		ECS::AttachComponent<Transform>(entity);
-		ECS::AttachComponent<AnimationController>(entity);
-
-		//Sets up components
-		std::string Fire = "Fire_ball.png";
-		auto& animController = ECS::GetComponent<AnimationController>(entity);
-		animController.InitUVs(Fire);
-
-		//Adds first Animation
-		animController.AddAnimation(Moving["burn"]);
-
-		//Set first anitmation
-		animController.SetActiveAnim(0);
-
-		//gets first animation
-		auto& anim = animController.GetAnimation(0);
-
-		ECS::GetComponent<Sprite>(entity).LoadSprite(Fire, 18/2, 18/2, true, &animController);
-		ECS::GetComponent<Sprite>(entity).SetUVs(vec2(1.f, 19.f), vec2(19.f, 1.f));
-		ECS::GetComponent<Transform>(entity).SetPosition(vec3(-45.f, 50.f, 22.f));
-
-		//Setup up the Identifier
-		unsigned int bitHolder = EntityIdentifier::SpriteBit() | EntityIdentifier::TransformBit() | EntityIdentifier::AnimationBit();
-		ECS::SetUpIdentifier(entity, bitHolder, "Fire Ball Entity");
 	}
 }
 
