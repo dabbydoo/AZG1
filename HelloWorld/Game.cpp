@@ -1,6 +1,7 @@
 #include "Game.h"
 #include <Windows.h>
 #include <mmsystem.h>
+#include<cstdlib>
 
 #include <random>
 
@@ -259,35 +260,9 @@ void Game::GUI()
 void Game::CheckEvents()
 {
 
-	bool animationtest = true;
 
-	HelloWorld* scene = (HelloWorld*)m_activeScene;
-	auto entity = scene->Beetle();
-	auto& animController = ECS::GetComponent<AnimationController>(entity);
-	static float try2 = 0.35;
 
-	vec3 Beetleposition = m_register->get<Transform>(entity).GetPosition();
-
-	animController.SetActiveAnim(0);
-	auto& anim = animController.GetAnimation(0);
-
-	if (Beetleposition.x <= 135 && Beetleposition.y == -25) {
-		m_register->get<Transform>(entity).SetPositionX(Beetleposition.x + try2);
-	}
-
-	if (Beetleposition.x > 135) {
-		m_register->get<Transform>(entity).SetPositionY(Beetleposition.y = -24.75);
-	}
-
-	if (Beetleposition.y == -24.75) {
-		
-		m_register->get<Transform>(entity).SetPositionX(Beetleposition.x - try2);
-	}
-
-	if (Beetleposition.x < -137) {
-		m_register->get<Transform>(entity).SetPositionY(Beetleposition.y = -25);
-	}
-	
+	CreateBeetle();
 
 	
 	
@@ -832,3 +807,75 @@ bool Game::isHitBorder(Bullet bullet)
 	else
 		return false;
 }
+
+void Game::CreateBeetle()
+
+{
+
+	HelloWorld* scene = (HelloWorld*)m_activeScene;
+	auto entity = scene->Beetle();
+	auto& animController = ECS::GetComponent<AnimationController>(entity);
+	static float try2 = 0.35;
+
+	vec3 Beetleposition = m_register->get<Transform>(entity).GetPosition();
+	//ECS::GetComponent<Transform>(entity).SetPosition(vec3(-115.f, -25.f, 20.f));
+
+	animController.SetActiveAnim(0);
+	auto& anim = animController.GetAnimation(0);
+
+	if (Beetleposition.x <= 135 && Beetleposition.y == -25) {
+		m_register->get<Transform>(entity).SetPositionX(Beetleposition.x + try2);
+	}
+
+	if (Beetleposition.x > 135) {
+		m_register->get<Transform>(entity).SetPositionY(Beetleposition.y = -24.75);
+	}
+
+	if (Beetleposition.y == -24.75) {
+
+		m_register->get<Transform>(entity).SetPositionX(Beetleposition.x - try2);
+	}
+
+	if (Beetleposition.x < -137) {
+		m_register->get<Transform>(entity).SetPositionY(Beetleposition.y = -25);
+	}
+}
+
+/*{
+	static int randomY;
+	srand(time(NULL));
+	randomY = rand() % 140 + (-65);
+	static int YMinus = (randomY + 0.25);
+	static int YPlus = (randomY - 0.25);
+
+	HelloWorld* scene = (HelloWorld*)m_activeScene;
+	auto entity = scene->Beetle();
+	auto& animController = ECS::GetComponent<AnimationController>(entity);
+	static float try2 = 0.35;
+
+	vec3 Beetleposition = m_register->get<Transform>(entity).GetPosition();
+	ECS::GetComponent<Transform>(entity).SetPosition(vec3(-115.f, randomY, 20.f));
+
+	animController.SetActiveAnim(0);
+	auto& anim = animController.GetAnimation(0);
+
+	// checks if beetle is in left boundary & position is at the start
+	if (Beetleposition.x <= 135 && Beetleposition.y == randomY) {
+		m_register->get<Transform>(entity).SetPositionX(Beetleposition.x + try2);
+	}
+	// if beetle reaches far right, set position slightly up on Y
+	if (Beetleposition.x > 135) {
+		m_register->get<Transform>(entity).SetPositionY(Beetleposition.y = YMinus);
+	}
+	// if it is slightly up, then go backwards
+	if (Beetleposition.y == YMinus) {
+		m_register->get<Transform>(entity).SetPositionX(Beetleposition.x - try2);
+	}
+	// it it gets back to the left wall, it will repeat
+	if (Beetleposition.x < -137) {
+		m_register->get<Transform>(entity).SetPositionY(Beetleposition.y = randomY);
+	}
+}*/
+
+
+

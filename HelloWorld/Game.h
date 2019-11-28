@@ -83,6 +83,8 @@ public:
 	//Bullet collision to border
 	bool isHitBorder(Bullet bullet);
 
+	void CreateBeetle();
+
 private:
 	//The window
 	Window *m_window = nullptr;
