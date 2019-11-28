@@ -105,81 +105,128 @@ bool Game::Run()
 
 void Game::Update()
 {
-	
-	
-	int x{ 3 }, y{3};
-	int maparray[5][5];
-	vec3 position = m_register->get<Transform>(EntityIdentifier::MainPlayer()).GetPosition();
+
+	int mapArray[5][5];
+	vec3 playerPos = m_register->get<Transform>(EntityIdentifier::MainPlayer()).GetPosition();
+
 	//walls	
-	//Game::CloseTop();
-	//Game::CloseRight();
-	//Game::CloseLeft();
-	//Game::CloseBottom();
-	Game::OpenTop();
-	Game::OpenBottom();
-	Game::OpenLeft();
-	Game::OpenRight();
+	//CloseTop();
+	//CloseRight();
+	//CloseLeft();
+	//CloseBottom();
+	//OpenTop();
+	//OpenBottom();
+	//OpenLeft();
+	//OpenRight();
 
 	//Update bullet position
 	UpdateBullet();
 	
+	auto& animControllerr = ECS::GetComponent<AnimationController>(1);
 
-	//Moving to the nedxt room
-	if (position.x > 190) {
-		m_register->get<Transform>(EntityIdentifier::MainPlayer()).SetPositionX((position.x = -190));
-		x += 1;
+	//Moving to the next room
+	if (playerPos.x > 190) {
+		
+		m_register->get<Transform>(EntityIdentifier::MainPlayer()).SetPositionX((playerPos.x = -190));
+		m_xMap += 1;
 	}
-	if (position.y > 100) {
-		m_register->get<Transform>(EntityIdentifier::MainPlayer()).SetPositionY((position.y = -100));
-		y += 1;
+	if (playerPos.y > 100) {
+		m_register->get<Transform>(EntityIdentifier::MainPlayer()).SetPositionY((playerPos.y = -100));
+		m_yMap -= 1;
 	}
-	if (position.x < -190) {
-		m_register->get<Transform>(EntityIdentifier::MainPlayer()).SetPositionX((position.x = 190));
-		x -= 1;
+	if (playerPos.x < -190) {
+		m_register->get<Transform>(EntityIdentifier::MainPlayer()).SetPositionX((playerPos.x = 190));
+		m_xMap -= 1;
 	}
-	if (position.y < -100) {
-		m_register->get<Transform>(EntityIdentifier::MainPlayer()).SetPositionY((position.y = 100));
-		y -= 1;
+	if (playerPos.y < -100) {
+		m_register->get<Transform>(EntityIdentifier::MainPlayer()).SetPositionY((playerPos.y = 100));
+		m_yMap += 1;
 
 	}
 
 
 	//Col 1
-	if (x == 1 && y == 1) {
+	if (m_xMap == 1 && m_yMap == 1) {
 		//Load TopLeft
+		animControllerr.SetActiveAnim(0);
+		CloseTop();
+		CloseLeft();
+		OpenBottom();
+		OpenRight();
 	}
-	if (x == 1 && y == 2 || x == 1 && y == 3 || x == 1 && y == 4) {
+	if (m_xMap == 1 && m_yMap == 2 || m_xMap == 1 && m_yMap == 3 || m_xMap == 1 && m_yMap == 4) {
 		//Load MiddleLeft
+		animControllerr.SetActiveAnim(3);
+		CloseLeft();
+		OpenTop();
+		OpenBottom();
+		OpenRight();
 	}
-	if (x == 1 && y == 5) {
+	if (m_xMap == 1 && m_yMap == 5) {
 		//Load BottomLeft
+		animControllerr.SetActiveAnim(6);
+		CloseLeft();
+		CloseBottom();
+		OpenTop();
+		OpenRight();
 	}
 
 	//Col 5
-	if (x == 5 && y == 1) {
+	if (m_xMap == 5 && m_yMap == 1) {
 		//Load TopRight
+		animControllerr.SetActiveAnim(2);
+		CloseTop();
+		CloseRight();
+		OpenBottom();
+		OpenLeft();
 	}
-	if (x == 5 && y == 2 || x == 5 && y == 3 || x == 5 && y == 4) {
+	if (m_xMap == 5 && m_yMap == 2 || m_xMap == 5 && m_yMap == 3 || m_xMap == 5 && m_yMap == 4) {
 		//Load MiddleRight
+		animControllerr.SetActiveAnim(5);
+		CloseRight();
+		OpenTop();
+		OpenBottom();
+		OpenLeft();
 	}
-	if (x == 5 && y == 5) {
+	if (m_xMap == 5 && m_yMap == 5) {
 		//Load BottomRight
+		animControllerr.SetActiveAnim(8);
+		CloseRight();
+		CloseBottom();
+		OpenTop();
+		OpenLeft();
 	}
 
 	//Top middle
-	if (x == 2 && y == 1 || x == 3 && y == 1|| x == 4 && y == 1) {
+	if (m_xMap == 2 && m_yMap == 1 || m_xMap == 3 && m_yMap == 1|| m_xMap == 4 && m_yMap == 1) {
 		//Load TopMiddle
+		animControllerr.SetActiveAnim(1);
+		CloseTop();
+		OpenBottom();
+		OpenLeft();
+		OpenRight();
+	}
+
+	//Middle Middle
+	if (m_xMap == 2 && m_yMap == 2 || m_xMap == 2 && m_yMap == 3 || m_xMap == 2 && m_yMap == 4 || m_xMap == 3 && m_yMap == 2 || m_xMap == 3 && m_yMap == 3 || m_xMap == 3 && m_yMap == 4 || m_xMap == 4 && m_yMap == 2 || m_xMap == 4 && m_yMap == 3 || m_xMap == 4 && m_yMap == 4) {
+		//Load Middle
+		animControllerr.SetActiveAnim(4);
+		OpenTop();
+		OpenBottom();
+		OpenLeft();
+		OpenRight();
 	}
 
 	//Bottom Middle
-	if (x == 2 && y == 5 || x == 3 && y == 5 || x == 4 && y == 5) {
+	if (m_xMap == 2 && m_yMap == 5 || m_xMap == 3 && m_yMap == 5 || m_xMap == 4 && m_yMap == 5) {
 		//Load BottomMiddle
+		animControllerr.SetActiveAnim(7);
+		CloseBottom();
+		OpenTop();
+		OpenLeft();
+		OpenRight();
 	}
 
-	//Middle
-	if (x == 2 && y == 2 || x == 2 && y == 3 || x == 2 && y == 4 || x == 3 && y == 2 || x == 3 && y == 3 || x == 3 && y == 4 || x == 4 && y == 2 || x == 4 && y == 3 || x == 4 && y == 4) {
-		//Load Middle
-	}
 
 
 
@@ -531,6 +578,11 @@ void Game::MouseWheel(SDL_MouseWheelEvent evnt)
 	}
 	//Resets the enabled flag
 	m_wheel = false;
+}
+
+void Game::setBackground(int background)
+{
+
 }
 
 void Game::CloseTop()

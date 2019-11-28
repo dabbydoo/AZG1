@@ -59,7 +59,10 @@ public:
 	void MouseClick(SDL_MouseButtonEvent evnt);
 	void MouseWheel(SDL_MouseWheelEvent evnt);
 
-	//Boarder
+	//Set background
+	void setBackground(int background);
+
+	//Border
 	void CloseTop();
 	void CloseLeft();
 	void CloseRight();
@@ -108,6 +111,10 @@ private:
 	int m_fireRate = 25;
 	int m_rateCounter = 0;
 	int m_FiringDir = 0;
+
+	//Room coord
+	int m_xMap = 3;
+	int m_yMap = 3;
 
 };
 

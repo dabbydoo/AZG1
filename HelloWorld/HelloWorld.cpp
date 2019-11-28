@@ -49,8 +49,46 @@ void HelloWorld::InitScene(float windowWidth, float windowHeight)
 	
 	{
 		
+		//Power up animataion file
+		auto mapLayout = File::LoadJSON("MapLayout.json");
+
+		//Creates entity
+		auto globalMap = ECS::CreateEntity();
+
+		//Add components
+		ECS::AttachComponent<Sprite>(globalMap);
+		ECS::AttachComponent<Transform>(globalMap);
+		ECS::AttachComponent<AnimationController>(globalMap);
+
+		//Set up components
+		std::string globalMapFile = "fullMap2.png";
+		auto& mapAnim = ECS::GetComponent<AnimationController>(globalMap);
+		mapAnim.InitUVs(globalMapFile);
+
+		//Adds first animation
+		mapAnim.AddAnimation(mapLayout["TopLeft"]);			//0
+		mapAnim.AddAnimation(mapLayout["TopMiddle"]);		//1
+		mapAnim.AddAnimation(mapLayout["TopRight"]);		//2
+		mapAnim.AddAnimation(mapLayout["MiddleLeft"]);		//3
+		mapAnim.AddAnimation(mapLayout["MiddleMiddle"]);	//4
+		mapAnim.AddAnimation(mapLayout["MiddleRight"]);		//5
+		mapAnim.AddAnimation(mapLayout["BottomLeft"]);		//6
+		mapAnim.AddAnimation(mapLayout["MiddleBottom"]);	//7
+		mapAnim.AddAnimation(mapLayout["BottomRight"]);		//8
+
+		//Sets active animation
+		mapAnim.SetActiveAnim(4);
+		//Gets first animation
+
+		ECS::GetComponent<Sprite>(globalMap).LoadSprite(globalMapFile, 380, 200, true, &mapAnim);
+		ECS::GetComponent<Sprite>(globalMap).SetUVs(vec2(14.f, 34.f), vec2(30.f, 11.f));
+		ECS::GetComponent<Transform>(globalMap).SetPosition(vec3(0.f, 0.f, 13.f));
+
+		//Sets up the Identifier
+		unsigned int bitHolder = EntityIdentifier::SpriteBit() | EntityIdentifier::TransformBit() | EntityIdentifier::AnimationBit();
+		ECS::SetUpIdentifier(globalMap, bitHolder, "Global Map");
 		
-		//Creates entity Map
+		/*//Creates entity Map
 		auto entityBack = ECS::CreateEntity();
 		//Add components
 		ECS::AttachComponent<Sprite>(entityBack);
@@ -64,6 +102,7 @@ void HelloWorld::InitScene(float windowWidth, float windowHeight)
 		//Setup up the Identifier
 		unsigned int bitHolder = 0x0;
 		ECS::SetUpIdentifier(entityBack, bitHolder, "Temp Entity");
+		*/
 	}
 
 	
