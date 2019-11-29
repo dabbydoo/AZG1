@@ -6,7 +6,7 @@
 #include <random>
 #include "EffectManager.h"
 
-
+int BossNum = 0;
 
 Game::~Game()
 {
@@ -32,6 +32,7 @@ Game::~Game()
 
 void Game::InitGame()
 {
+	
 	/*bool menu = true;
 	
 	if (menu = true) {
@@ -71,6 +72,9 @@ void Game::InitGame()
 
 bool Game::Run()
 {
+	//CreateBoss();
+	CreateBeetle();
+	ShadowEffect();
 	//While window is still open
 	while (m_window->isOpen())
 	{
@@ -108,6 +112,13 @@ bool Game::Run()
 
 void Game::Update()
 {
+	if (BossNum < 1 && m_xMap == 1 && m_yMap == 2)
+	{
+		CreateBoss();
+	}
+	else {
+
+	}
 
 	int mapArray[5][5];
 	vec3 playerPos = m_register->get<Transform>(EntityIdentifier::MainPlayer()).GetPosition();
@@ -158,7 +169,10 @@ void Game::Update()
 	if (m_xMap == 1 && m_yMap == 1) {
 		//Load TopLeft
 		animControllerr.SetActiveAnim(0);
-		CreateBeetle();
+		if (!enemy) {
+			CreateBeetle();
+		}
+
 		CloseTop();
 		CloseLeft();
 		OpenBottom();
@@ -169,8 +183,10 @@ void Game::Update()
 	if (m_xMap == 1 && m_yMap == 2 || m_xMap == 1 && m_yMap == 3 || m_xMap == 1 && m_yMap == 4) {
 		//Load MiddleLeft
 		animControllerr.SetActiveAnim(3);
-		CreateBeetle();
-		UpdateBeetle();
+		if (!enemy) {
+			CreateBeetle();
+		}
+
 		CloseLeft();
 		OpenTop();
 		OpenBottom();
@@ -180,8 +196,10 @@ void Game::Update()
 	if (m_xMap == 1 && m_yMap == 5) {
 		//Load BottomLeft
 		animControllerr.SetActiveAnim(6);
-		CreateBeetle();
-		UpdateBeetle();
+		if (!enemy) {
+			CreateBeetle();
+		}
+
 		CloseLeft();
 		CloseBottom();
 		OpenTop();
@@ -192,8 +210,10 @@ void Game::Update()
 	if (m_xMap == 5 && m_yMap == 1) {
 		//Load TopRight
 		animControllerr.SetActiveAnim(2);
-		CreateBeetle();
-		UpdateBeetle();
+		if (!enemy) {
+			CreateBeetle();
+		}
+
 		CloseTop();
 		CloseRight();
 		OpenBottom();
@@ -203,8 +223,10 @@ void Game::Update()
 	if (m_xMap == 5 && m_yMap == 2 || m_xMap == 5 && m_yMap == 3 || m_xMap == 5 && m_yMap == 4) {
 		//Load MiddleRight
 		animControllerr.SetActiveAnim(5);
-		CreateBeetle();
-		UpdateBeetle();
+		if (!enemy) {
+			CreateBeetle();
+		}
+
 		CloseRight();
 		OpenTop();
 		OpenBottom();
@@ -214,8 +236,10 @@ void Game::Update()
 	if (m_xMap == 5 && m_yMap == 5) {
 		//Load BottomRight
 		animControllerr.SetActiveAnim(8);
-		CreateBeetle();
-		UpdateBeetle();
+		if (!enemy) {
+			CreateBeetle();
+		}
+
 		CloseRight();
 		CloseBottom();
 		OpenTop();
@@ -227,8 +251,10 @@ void Game::Update()
 	if (m_xMap == 2 && m_yMap == 1 || m_xMap == 3 && m_yMap == 1|| m_xMap == 4 && m_yMap == 1) {
 		//Load TopMiddle
 		animControllerr.SetActiveAnim(1);
-		CreateBeetle();
-		UpdateBeetle();
+		if (!enemy) {
+			CreateBeetle();
+		}
+
 		CloseTop();
 		OpenBottom();
 		OpenLeft();
@@ -257,7 +283,10 @@ void Game::Update()
 	if (m_xMap == 2 && m_yMap == 5 || m_xMap == 3 && m_yMap == 5 || m_xMap == 4 && m_yMap == 5) {
 		//Load BottomMiddle
 		animControllerr.SetActiveAnim(7);
-		CreateBeetle();
+		if (!enemy) {
+			CreateBeetle();
+		}
+
 		CloseBottom();
 		OpenTop();
 		OpenLeft();
@@ -293,9 +322,10 @@ void Game::GUI()
 void Game::CheckEvents()
 {
 	
-
+	
 	//CreateBeetle();
-	ShadowEffect();
+	//ShadowEffect();
+	
 	
 	
 
@@ -971,6 +1001,71 @@ void Game::UpdateBeetle()
 		
 		}
 }
+
+void Game::CreateBoss()
+
+{
+	enemy = true;
+	Enemy Boss;
+
+
+
+	//Boss animation file
+	auto Moving = File::LoadJSON("bossSprite.json");
+
+	//Creates entity Boss
+	auto entityB = ECS::CreateEntity();
+
+	//Add components
+	ECS::AttachComponent<Sprite>(entityB);
+	ECS::AttachComponent<Transform>(entityB);
+	ECS::AttachComponent<AnimationController>(entityB);
+
+	//Sets up components
+	std::string image = "Boss.png";
+	auto& animController = ECS::GetComponent<AnimationController>(entityB);
+	animController.InitUVs(image);
+
+	//Adds first Animation
+	animController.AddAnimation(Moving["bossLeft"]);
+	animController.AddAnimation(Moving["bossRight"]);
+
+
+	Boss.EnemyID = entityB;
+
+	//Set first anitmation
+	animController.SetActiveAnim(0);
+
+	//gets first animation
+	auto& anim = animController.GetAnimation(0);
+
+	ECS::GetComponent<Sprite>(entityB).LoadSprite(image, 100 / 2, 151 / 2, true, &animController);
+
+
+	float randomY;
+	srand(time(NULL));
+	randomY = rand() % 120 + (-80);
+
+	float randomX;
+	srand(time(NULL));
+	randomX = rand() % 80 + (-30);
+
+	ECS::GetComponent<Transform>(entityB).SetPosition(vec3(randomX, randomY, 41.f));
+
+	Boss.xPos = ECS::GetComponent<Transform>(entityB).GetPositionX();
+
+	Boss.yPos = ECS::GetComponent<Transform>(entityB).GetPositionY();
+
+	
+
+	//Setup up the Identifier
+	unsigned int bitHolder = EntityIdentifier::SpriteBit() | EntityIdentifier::TransformBit() | EntityIdentifier::AnimationBit();
+	ECS::SetUpIdentifier(entityB, bitHolder, "Boss Enemy");
+
+	BossNum = 1;
+
+}
+
 
 void Game::ShadowEffect()
 {

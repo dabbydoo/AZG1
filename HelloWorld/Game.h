@@ -89,6 +89,8 @@ public:
 
 	void UpdateBeetle();
 
+	void CreateBoss();
+
 	void ShadowEffect();
 
 	bool contact();
@@ -118,7 +120,7 @@ private:
 	bool m_click = false;
 	bool m_wheel = false;
 
-	bool enemy = false;
+	bool enemy = true;
 
 	//Bullet
 	std::vector<Bullet> m_bulletList;

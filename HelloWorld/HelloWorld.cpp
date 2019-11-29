@@ -264,7 +264,7 @@ void HelloWorld::InitScene(float windowWidth, float windowHeight)
 		ECS::GetComponent<Sprite>(entitySpaceRanger).LoadSprite(SpaceRanger, 485 / 30, 547 / 30, true, &animControllerr);
 		ECS::GetComponent<Sprite>(entitySpaceRanger).SetUVs(vec2(14.f, 34.f), vec2(30.f, 11.f));
 		//30, -25, 20
-		ECS::GetComponent<Transform>(entitySpaceRanger).SetPosition(vec3(0.f, 0.f, 50.f));
+		ECS::GetComponent<Transform>(entitySpaceRanger).SetPosition(vec3(0.f, 0.f, 40.f));
 
 		//Setup up the Identifier
 		unsigned int bitHolder = EntityIdentifier::SpriteBit() | EntityIdentifier::TransformBit() | EntityIdentifier::AnimationBit();
@@ -389,7 +389,7 @@ void HelloWorld::InitScene(float windowWidth, float windowHeight)
 		//gets first animation
 		auto& anim = animController.GetAnimation(0);
 
-		ECS::GetComponent<Sprite>(entityL).LoadSprite(Lizard, 60/3,49/3, true, &animController);
+		ECS::GetComponent<Sprite>(entityL).LoadSprite(Lizard, 60/1.75,49/1.75, true, &animController);
 		ECS::GetComponent<Sprite>(entityL).SetUVs(vec2(1.f, 50.f), vec2(59.f, 1.f));
 		ECS::GetComponent<Transform>(entityL).SetPosition(vec3(-70.f, 50.f, 21.f));
 
@@ -426,9 +426,9 @@ void HelloWorld::InitScene(float windowWidth, float windowHeight)
 		//gets first animation
 		auto& anim = animController.GetAnimation(0);
 
-		ECS::GetComponent<Sprite>(entityBo).LoadSprite(Boss, 108/2, 151/2,true, &animController);
+		//ECS::GetComponent<Sprite>(entityBo).LoadSprite(Boss, 108/2, 151/2,true, &animController);
 		ECS::GetComponent<Sprite>(entityBo).SetUVs(vec2(1.f, 152.f), vec2(113.f, 1.f));
-		ECS::GetComponent<Transform>(entityBo).SetPosition(vec3(100.f, -30.f, 22.f));
+		//ECS::GetComponent<Transform>(entityBo).SetPosition(vec3(100.f, -30.f, 22.f));
 
 		//Setup up the Identifier
 		unsigned int bitHolder = EntityIdentifier::SpriteBit() | EntityIdentifier::TransformBit() | EntityIdentifier::AnimationBit();
