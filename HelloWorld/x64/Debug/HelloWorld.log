@@ -1,2 +1,17 @@
-﻿  BackEnd.cpp
-  HelloWorld.vcxproj -> C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\x64\Debug\HelloWorld.exe
+﻿  Game.cpp
+C:\Users\farha\AZG1\HelloWorld\Game.cpp(110,6): warning C4101: 'mapArray': unreferenced local variable
+C:\Users\farha\AZG1\HelloWorld\Game.cpp(733,65): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\farha\AZG1\HelloWorld\Game.cpp(734,65): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\farha\AZG1\HelloWorld\Game.cpp(735,65): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\farha\AZG1\HelloWorld\Game.cpp(756,86): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\farha\AZG1\HelloWorld\Game.cpp(757,86): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\farha\AZG1\HelloWorld\Game.cpp(798,62): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\farha\AZG1\HelloWorld\Game.cpp(798,56): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\farha\AZG1\HelloWorld\Game.cpp(884,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\farha\AZG1\HelloWorld\Game.cpp(885,25): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\farha\AZG1\HelloWorld\Game.cpp(889,67): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\farha\AZG1\HelloWorld\Game.cpp(891,67): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\farha\AZG1\HelloWorld\Game.cpp(943,30): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\farha\AZG1\HelloWorld\Game.cpp(948,37): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+C:\Users\farha\AZG1\HelloWorld\Game.cpp(950,89): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  HelloWorld.vcxproj -> C:\Users\farha\AZG1\x64\Debug\HelloWorld.exe

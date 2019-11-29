@@ -168,6 +168,7 @@ void Game::Update()
 		//Load MiddleLeft
 		animControllerr.SetActiveAnim(3);
 		CreateBeetle();
+		UpdateBeetle();
 		CloseLeft();
 		OpenTop();
 		OpenBottom();
@@ -178,6 +179,7 @@ void Game::Update()
 		//Load BottomLeft
 		animControllerr.SetActiveAnim(6);
 		CreateBeetle();
+		UpdateBeetle();
 		CloseLeft();
 		CloseBottom();
 		OpenTop();
@@ -189,6 +191,7 @@ void Game::Update()
 		//Load TopRight
 		animControllerr.SetActiveAnim(2);
 		CreateBeetle();
+		UpdateBeetle();
 		CloseTop();
 		CloseRight();
 		OpenBottom();
@@ -199,6 +202,7 @@ void Game::Update()
 		//Load MiddleRight
 		animControllerr.SetActiveAnim(5);
 		CreateBeetle();
+		UpdateBeetle();
 		CloseRight();
 		OpenTop();
 		OpenBottom();
@@ -209,6 +213,7 @@ void Game::Update()
 		//Load BottomRight
 		animControllerr.SetActiveAnim(8);
 		CreateBeetle();
+		UpdateBeetle();
 		CloseRight();
 		CloseBottom();
 		OpenTop();
@@ -221,6 +226,7 @@ void Game::Update()
 		//Load TopMiddle
 		animControllerr.SetActiveAnim(1);
 		CreateBeetle();
+		UpdateBeetle();
 		CloseTop();
 		OpenBottom();
 		OpenLeft();
@@ -230,9 +236,14 @@ void Game::Update()
 	//Middle Middle
 	if (m_xMap == 2 && m_yMap == 2 || m_xMap == 2 && m_yMap == 3 || m_xMap == 2 && m_yMap == 4 || m_xMap == 3 && m_yMap == 2 || m_xMap == 3 && m_yMap == 3 || m_xMap == 3 && m_yMap == 4 || m_xMap == 4 && m_yMap == 2 || m_xMap == 4 && m_yMap == 3 || m_xMap == 4 && m_yMap == 4) {
 		//Load Middle
+	//	std::cout << "I am in the middle room"<<std::endl;
 		animControllerr.SetActiveAnim(4);
 		//UpdateBeetle();
-		CreateBeetle();
+		if (!enemy) {
+			CreateBeetle();
+		}
+
+		Game::UpdateBeetle();
 		OpenTop();
 		OpenBottom();
 		OpenLeft();
@@ -456,6 +467,7 @@ void Game::KeyboardDown()
 	if (Input::GetKeyDown(Key::D))
 	{
 		printf("D Key Down\n");
+		printf("o");
 		//animControllerr.SetActiveAnim(3);
 	}
 
@@ -831,18 +843,76 @@ bool Game::isHitBorder(Bullet bullet)
 void Game::CreateBeetle()
 
 {
+	enemy = true;
 	Enemy Beetle;
 
-	static int randomY;
+
+	
+		//Beetle animation file
+		auto Moving = File::LoadJSON("Insect.json");
+
+		//Creates entity Beetle
+		auto entityB = ECS::CreateEntity();
+
+		//Add components
+		ECS::AttachComponent<Sprite>(entityB);
+		ECS::AttachComponent<Transform>(entityB);
+		ECS::AttachComponent<AnimationController>(entityB);
+
+		//Sets up components
+		std::string image = "Beetle.png";
+		auto& animController = ECS::GetComponent<AnimationController>(entityB);
+		animController.InitUVs(image);
+
+		//Adds first Animation
+		animController.AddAnimation(Moving["move"]);
+		animController.AddAnimation(Moving["still"]);
+
+
+		Beetle.EnemyID = entityB;
+
+		//Set first anitmation
+		animController.SetActiveAnim(0);
+
+		//gets first animation
+		auto& anim = animController.GetAnimation(0);
+
+		ECS::GetComponent<Sprite>(entityB).LoadSprite(image, 86 / 4, 87 / 4, true, &animController);
+
+		
+	 float randomY;
 	srand(time(NULL));
 	randomY = rand() % 140 + (-65);
-	static float YMinus = (randomY - 0.25);
-	static float YPlus = (randomY +0.25);
+		
+		ECS::GetComponent<Transform>(entityB).SetPosition(vec3(-115.f, randomY, 20.f));
+
+		Beetle.xPos = ECS::GetComponent<Transform>(entityB).GetPositionX();
+
+		Beetle.yPos = ECS::GetComponent<Transform>(entityB).GetPositionY();
+
+		m_Bettle_spawn.push_back(Beetle);
+
+		//Setup up the Identifier
+		unsigned int bitHolder = EntityIdentifier::SpriteBit() | EntityIdentifier::TransformBit() | EntityIdentifier::AnimationBit();
+		ECS::SetUpIdentifier(entityB, bitHolder, "Beetle Enemy");
+
+
+		
+
+	/*
+		static int randomY;
+		srand(time(NULL));
+		randomY = rand() % 140 + (-65);
+		static float YMinus = (randomY - 0.25);
+		static float YPlus = (randomY + 0.25);
+
+
 
 	HelloWorld* scene = (HelloWorld*)m_activeScene;
 	auto entity = scene->Beetle();
 	
-	Beetle.EnemyID = entity;
+
+
 
 	auto& animController = ECS::GetComponent<AnimationController>(entity);
 	static float try2 = 0.35;
@@ -865,16 +935,44 @@ void Game::CreateBeetle()
 	else if (Beetleposition.x <= -134) {
 		try2 = 0.35;
 	}
-
+*/
 }
 
 void Game::UpdateBeetle()
 {
+	static float velocity = 0.35;
+	
+	
 	for (int i = 0; i < m_Bettle_spawn.size(); i++)
 	{
+		m_Bettle_spawn[i].xPos += velocity;
+	
+		ECS::GetComponent<Transform>(m_Bettle_spawn[i].EnemyID).SetPositionX(m_Bettle_spawn[i].xPos);
+		//ECS::GetComponent<Transform>(m_Bettle_spawn[i].EnemyID).SetPositionY(m_Bettle_spawn[i].yPos);
+
+		std::cout << velocity << std::endl;
+
+		if (m_Bettle_spawn[i].xPos >= 134) {
+			velocity *= -1.f;
+			std::cout << "Reached";
+		}
+
+		else if (m_Bettle_spawn[i].xPos <= -134) {
+			velocity *= -1.f;
+			std::cout << "reached here too";
+		}
+
+		if (velocity>0.35) {
 			ECS::DestroyEntity(m_Bettle_spawn[i].EnemyID);
 			m_Bettle_spawn.erase(m_Bettle_spawn.begin() + i);
-
+			std::cout << "Hi";
 		}
+		
+		}
+}
+
+bool Game::contact()
+{
+	return false;
 }
 

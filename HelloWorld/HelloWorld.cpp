@@ -319,7 +319,7 @@ void HelloWorld::InitScene(float windowWidth, float windowHeight)
 		*/
 	}
 	
-	
+	/*
 	
 	{
 		//Beetle animation file
@@ -359,7 +359,7 @@ void HelloWorld::InitScene(float windowWidth, float windowHeight)
 		m_BeetleEntity = entityB;
 
 	}
-	
+	*/
 	{
 		//Lizard animation file
 		auto Moving = File::LoadJSON("Lizard.json");

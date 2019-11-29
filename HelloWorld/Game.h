@@ -89,6 +89,8 @@ public:
 
 	void UpdateBeetle();
 
+	bool contact();
+
 private:
 	//The window
 	Window *m_window = nullptr;
@@ -113,6 +115,8 @@ private:
 	bool m_motion = false;
 	bool m_click = false;
 	bool m_wheel = false;
+
+	bool enemy = false;
 
 	//Bullet
 	std::vector<Bullet> m_bulletList;
