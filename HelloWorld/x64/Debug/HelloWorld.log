@@ -1,18 +1,2 @@
-﻿  Game.cpp
-C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\HelloWorld\Game.cpp(110,6): warning C4101:  'mapArray': unreferenced local variable
-C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\HelloWorld\Game.cpp(721,65): warning C4244:  '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\HelloWorld\Game.cpp(722,65): warning C4244:  '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\HelloWorld\Game.cpp(723,65): warning C4244:  '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\HelloWorld\Game.cpp(744,86): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\HelloWorld\Game.cpp(745,86): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\HelloWorld\Game.cpp(786,62): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\HelloWorld\Game.cpp(786,56): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\HelloWorld\Game.cpp(837,12): warning C4244:  'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\HelloWorld\Game.cpp(839,22): warning C4244:  'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\HelloWorld\Game.cpp(840,21): warning C4244:  'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\HelloWorld\Game.cpp(848,26): warning C4305:  'initializing': truncation from 'double' to 'float'
-C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\HelloWorld\Game.cpp(861,15): warning C4305:  '=': truncation from 'double' to 'float'
-  main.cpp
-  Generating Code...
-C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\HelloWorld\Game.cpp(866,14): warning C4305:  '=': truncation from 'double' to 'float'
+﻿  BackEnd.cpp
   HelloWorld.vcxproj -> C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\x64\Debug\HelloWorld.exe

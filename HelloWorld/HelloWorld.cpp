@@ -1,4 +1,5 @@
 #include "HelloWorld.h"
+#include "Framebuffer.h"
 
 //#include "EntityIdentifier.cpp"
 //#include "Game.cpp"
@@ -11,6 +12,8 @@ HelloWorld::HelloWorld(std::string name)
 
 void HelloWorld::InitScene(float windowWidth, float windowHeight)
 {
+	Framebuffer::InitFullscreenQuad();
+
 	m_sceneReg = new entt::registry;
 	ECS::AttachRegister(m_sceneReg);
 	float aspectRatio = windowWidth / windowHeight;

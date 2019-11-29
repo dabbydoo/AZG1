@@ -1,5 +1,7 @@
 #include "EffectManager.h"
 
+Selectable EffectManager::m_selectable = Selectable("Effect Editor");
+
 int EffectManager::m_numEffects = 0;
 bool EffectManager::m_effectsInit = false;
 
@@ -52,6 +54,89 @@ EffectManager::~EffectManager()
 		}
 	}
 }
+
+void EffectManager::CreateTab()
+{
+	bool temp = false;
+
+	if (ImGui::BeginTabItem(m_selectable.GetName().c_str(), m_selectable.GetSelected())) {
+		temp = true;
+
+		ImGui::EndTabItem();
+	}
+	if (temp)
+		CreateEditor();
+}
+
+void EffectManager::CreateEditor()
+{
+	if (m_selectable.GetSelected()) {
+		if (ImGui::TreeNode("Sepia Effect")) {
+			if (m_sepia != -1) {
+				SepiaEffect* temp = (SepiaEffect*)EffectManager::GetEffect(m_sepia);
+				float intensity = temp->GetIntensity();
+
+				ImGui::Text("Currently Attached");
+
+				if (ImGui::DragFloat("Intensity", &intensity, 0.01f, 0.f, 1.f)) {
+					temp->SetIntensity(intensity);
+				}
+				if (ImGui::Button("Remove Effect", ImVec2(100.f, 20.f))) {
+					EffectManager::RemoveEffect(m_sepia);
+				}
+			}
+			else {
+				ImGui::Text("None Attached");
+
+				if (ImGui::Button("Add Effect", ImVec2(100.f, 20.f))) {
+					EffectManager::CreateEffect(Sepia, BackEnd::GetWindowWidth(), BackEnd::GetWindowHeight());
+
+				}
+			}
+
+			ImGui::TreePop();
+		}
+	}
+
+	if (m_selectable.GetSelected()) {
+		if (ImGui::TreeNode("Vignette Effect")) {
+			if (m_vignette != -1) {
+				VignetteEffect* temp = (VignetteEffect*)EffectManager::GetEffect(m_vignette);
+				float innerradius = temp->GetInnerRadius();
+				float outerradius = temp->GetOuterRadius();
+				float opacity = temp->GetOpacity();
+
+				ImGui::Text("Currently Attached");
+
+				if (ImGui::DragFloat("Inner Radius", &innerradius, 0.01f, 0.f, 1.f)) {
+					temp->SetInnerRadius(innerradius);
+				}
+				if (ImGui::DragFloat("Outer Radius", &outerradius, 0.01f, 0.f, 1.f)) {
+					temp->SetOuterRadius(outerradius);
+				}
+				if (ImGui::DragFloat("Opacity", &opacity, 0.01f, 0.f, 1.f)) {
+					temp->SetOpacity(opacity);
+				}
+				if (ImGui::Button("Remove Effect", ImVec2(100.f, 20.f))) {
+					EffectManager::RemoveEffect(m_vignette);
+				}
+			}
+			else {
+				ImGui::Text("None Attached");
+
+				if (ImGui::Button("Add Effect", ImVec2(100.f, 20.f))) {
+					EffectManager::CreateEffect(Vignette, BackEnd::GetWindowWidth(), BackEnd::GetWindowHeight());
+
+				}
+			}
+
+			ImGui::TreePop();
+		}
+	}
+}
+
+
+
 
 void EffectManager::InitEffectManager(unsigned width, unsigned height)
 {

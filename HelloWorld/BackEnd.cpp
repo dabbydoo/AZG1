@@ -159,6 +159,7 @@ void BackEnd::Update(entt::registry* mainReg)
 void BackEnd::GUI(entt::registry* reg, Scene* scene)
 {
 	SceneEditor::CreateTab(reg, scene);
+	EffectManager::CreateTab();
 }
 
 void BackEnd::ReshapeWindow(int w, int h, entt::registry * mainReg)
