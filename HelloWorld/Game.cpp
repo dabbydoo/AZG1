@@ -7,6 +7,7 @@
 #include "EffectManager.h"
 
 int BossNum = 0;
+int BeetleNum = 0;
 
 Game::~Game()
 {
@@ -73,7 +74,7 @@ void Game::InitGame()
 bool Game::Run()
 {
 	//CreateBoss();
-	CreateBeetle();
+	//CreateBeetle();
 	ShadowEffect();
 	//While window is still open
 	while (m_window->isOpen())
@@ -112,11 +113,14 @@ bool Game::Run()
 
 void Game::Update()
 {
+	
 	if (BossNum < 1 && m_xMap == 1 && m_yMap == 2)
 	{
 		CreateBoss();
 	}
-	else {
+	
+	else 
+	{
 
 	}
 
@@ -169,7 +173,7 @@ void Game::Update()
 	if (m_xMap == 1 && m_yMap == 1) {
 		//Load TopLeft
 		animControllerr.SetActiveAnim(0);
-		if (!enemy) {
+		if (BeetleNum < 1) {
 			CreateBeetle();
 		}
 
@@ -183,7 +187,7 @@ void Game::Update()
 	if (m_xMap == 1 && m_yMap == 2 || m_xMap == 1 && m_yMap == 3 || m_xMap == 1 && m_yMap == 4) {
 		//Load MiddleLeft
 		animControllerr.SetActiveAnim(3);
-		if (!enemy) {
+		if (BeetleNum < 1) {
 			CreateBeetle();
 		}
 
@@ -196,7 +200,7 @@ void Game::Update()
 	if (m_xMap == 1 && m_yMap == 5) {
 		//Load BottomLeft
 		animControllerr.SetActiveAnim(6);
-		if (!enemy) {
+		if (BeetleNum < 1) {
 			CreateBeetle();
 		}
 
@@ -210,7 +214,7 @@ void Game::Update()
 	if (m_xMap == 5 && m_yMap == 1) {
 		//Load TopRight
 		animControllerr.SetActiveAnim(2);
-		if (!enemy) {
+		if (BeetleNum < 1) {
 			CreateBeetle();
 		}
 
@@ -223,7 +227,7 @@ void Game::Update()
 	if (m_xMap == 5 && m_yMap == 2 || m_xMap == 5 && m_yMap == 3 || m_xMap == 5 && m_yMap == 4) {
 		//Load MiddleRight
 		animControllerr.SetActiveAnim(5);
-		if (!enemy) {
+		if (BeetleNum < 1) {
 			CreateBeetle();
 		}
 
@@ -236,7 +240,7 @@ void Game::Update()
 	if (m_xMap == 5 && m_yMap == 5) {
 		//Load BottomRight
 		animControllerr.SetActiveAnim(8);
-		if (!enemy) {
+		if (BeetleNum < 1) {
 			CreateBeetle();
 		}
 
@@ -251,7 +255,7 @@ void Game::Update()
 	if (m_xMap == 2 && m_yMap == 1 || m_xMap == 3 && m_yMap == 1|| m_xMap == 4 && m_yMap == 1) {
 		//Load TopMiddle
 		animControllerr.SetActiveAnim(1);
-		if (!enemy) {
+		if (BeetleNum < 1) {
 			CreateBeetle();
 		}
 
@@ -267,7 +271,7 @@ void Game::Update()
 	//	std::cout << "I am in the middle room"<<std::endl;
 		animControllerr.SetActiveAnim(4);
 		//UpdateBeetle();
-		if (!enemy) {
+		if (BeetleNum < 1) {
 			CreateBeetle();
 		}
 
@@ -283,7 +287,7 @@ void Game::Update()
 	if (m_xMap == 2 && m_yMap == 5 || m_xMap == 3 && m_yMap == 5 || m_xMap == 4 && m_yMap == 5) {
 		//Load BottomMiddle
 		animControllerr.SetActiveAnim(7);
-		if (!enemy) {
+		if (BeetleNum < 1) {
 			CreateBeetle();
 		}
 
@@ -911,9 +915,10 @@ void Game::CreateBeetle()
 		ECS::GetComponent<Sprite>(entityB).LoadSprite(image, 86 / 4, 87 / 4, true, &animController);
 
 		
-	 float randomY;
+	float randomY;
 	srand(time(NULL));
 	randomY = rand() % 140 + (-65);
+
 		
 		ECS::GetComponent<Transform>(entityB).SetPosition(vec3(-115.f, randomY, 20.f));
 
@@ -927,6 +932,7 @@ void Game::CreateBeetle()
 		unsigned int bitHolder = EntityIdentifier::SpriteBit() | EntityIdentifier::TransformBit() | EntityIdentifier::AnimationBit();
 		ECS::SetUpIdentifier(entityB, bitHolder, "Beetle Enemy");
 
+		BeetleNum = 1;
 
 		
 
@@ -983,7 +989,9 @@ void Game::UpdateBeetle()
 
 		std::cout << velocity << std::endl;
 
-		if (m_Bettle_spawn[i].xPos >= 134) {
+
+
+		if (m_Bettle_spawn[i].xPos >= 134 ) {
 			velocity *= -1.f;
 			std::cout << "Reached";
 		}
@@ -1002,9 +1010,18 @@ void Game::UpdateBeetle()
 		}
 }
 
+
+
 void Game::CreateBoss()
 
 {
+	float RoomY;
+	srand(time(NULL));
+	RoomY = rand() % 5 + (1);
+	float RoomX;
+	srand(time(NULL));
+	RoomX = rand() % 5 + (1);
+
 	enemy = true;
 	Enemy Boss;
 
@@ -1040,7 +1057,7 @@ void Game::CreateBoss()
 	auto& anim = animController.GetAnimation(0);
 
 	ECS::GetComponent<Sprite>(entityB).LoadSprite(image, 100 / 2, 151 / 2, true, &animController);
-
+	
 
 	float randomY;
 	srand(time(NULL));
