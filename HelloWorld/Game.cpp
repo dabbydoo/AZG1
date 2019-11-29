@@ -4,6 +4,8 @@
 #include<cstdlib>
 
 #include <random>
+#include "EffectManager.h"
+
 
 
 Game::~Game()
@@ -290,11 +292,10 @@ void Game::GUI()
 
 void Game::CheckEvents()
 {
-
-
+	
 
 	//CreateBeetle();
-
+	ShadowEffect();
 	
 	
 
@@ -969,6 +970,16 @@ void Game::UpdateBeetle()
 		}
 		
 		}
+}
+
+void Game::ShadowEffect()
+{
+
+	//VignetteEffect* temp = (VignetteEffect*)EffectManager::GetEffect(m_vignette);
+	EffectManager::CreateEffect(Vignette, BackEnd::GetWindowWidth(), BackEnd::GetWindowHeight());
+	//float innerradius = temp->GetInnerRadius();
+	//float outerradius = temp->GetOuterRadius();
+	//float opacity = temp->GetOpacity();
 }
 
 bool Game::contact()

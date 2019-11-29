@@ -89,6 +89,8 @@ public:
 
 	void UpdateBeetle();
 
+	void ShadowEffect();
+
 	bool contact();
 
 private:
