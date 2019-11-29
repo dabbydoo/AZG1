@@ -809,7 +809,7 @@ bool Game::isHitBorder(Bullet bullet)
 }
 
 void Game::CreateBeetle()
-
+/*
 {
 
 	HelloWorld* scene = (HelloWorld*)m_activeScene;
@@ -840,42 +840,59 @@ void Game::CreateBeetle()
 		m_register->get<Transform>(entity).SetPositionY(Beetleposition.y = -25);
 	}
 }
-
-/*{
+*/
+{
 	static int randomY;
 	srand(time(NULL));
 	randomY = rand() % 140 + (-65);
-	static int YMinus = (randomY + 0.25);
-	static int YPlus = (randomY - 0.25);
+	static float YMinus = (randomY - 0.25);
+	static float YPlus = (randomY +0.25);
 
 	HelloWorld* scene = (HelloWorld*)m_activeScene;
 	auto entity = scene->Beetle();
 	auto& animController = ECS::GetComponent<AnimationController>(entity);
 	static float try2 = 0.35;
+	
 
-	vec3 Beetleposition = m_register->get<Transform>(entity).GetPosition();
-	ECS::GetComponent<Transform>(entity).SetPosition(vec3(-115.f, randomY, 20.f));
+	 vec3 Beetleposition = m_register->get<Transform>(entity).GetPosition();
+	ECS::GetComponent<Transform>(entity).SetPosition(vec3(-115.f, YPlus, 20.f));
 
 	animController.SetActiveAnim(0);
 	auto& anim = animController.GetAnimation(0);
 
+
+	m_register->get<Transform>(entity).SetPositionX(Beetleposition.x + try2);
+
+	if (Beetleposition.x>=134) {
+		try2 =-0.35 ;
+	}
+
+
+	else if (Beetleposition.x <= -134) {
+		try2 = 0.35;
+	}
+
+	/*
 	// checks if beetle is in left boundary & position is at the start
-	if (Beetleposition.x <= 135 && Beetleposition.y == randomY) {
+	if (Beetleposition.x <= 135 && Beetleposition.y == YPlus) {
 		m_register->get<Transform>(entity).SetPositionX(Beetleposition.x + try2);
 	}
+	else if (Beetleposition.x >= -135 && Beetleposition.y == YMinus) {
+		m_register->get<Transform>(entity).SetPositionX(Beetleposition.x - try2);
+	}
 	// if beetle reaches far right, set position slightly up on Y
-	if (Beetleposition.x > 135) {
+	if (Beetleposition.x >=135) {
 		m_register->get<Transform>(entity).SetPositionY(Beetleposition.y = YMinus);
 	}
 	// if it is slightly up, then go backwards
-	if (Beetleposition.y == YMinus) {
-		m_register->get<Transform>(entity).SetPositionX(Beetleposition.x - try2);
-	}
+	
 	// it it gets back to the left wall, it will repeat
-	if (Beetleposition.x < -137) {
-		m_register->get<Transform>(entity).SetPositionY(Beetleposition.y = randomY);
+	else if (Beetleposition.x <= -135) {
+		m_register->get<Transform>(entity).SetPositionY(Beetleposition.y = YPlus);
 	}
-}*/
+	*/
+	
+}
 
 
 
