@@ -5,6 +5,8 @@
 #include "HelloWorld.h"
 #include "bullet.h"
 
+#include"Enemy_Class.h"
+
 //Our main class for running our game
 class Game
 {
@@ -85,6 +87,8 @@ public:
 
 	void CreateBeetle();
 
+	void UpdateBeetle();
+
 private:
 	//The window
 	Window *m_window = nullptr;
@@ -112,6 +116,7 @@ private:
 
 	//Bullet
 	std::vector<Bullet> m_bulletList;
+	std::vector<Enemy>m_Bettle_spawn;
 
 	//Bullet fire rate
 	int m_fireRate = 25;

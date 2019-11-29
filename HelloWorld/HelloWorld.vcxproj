@@ -189,6 +189,7 @@
     <ClInclude Include="CameraSystem.h" />
     <ClInclude Include="ECS.h" />
     <ClInclude Include="EffectManager.h" />
+    <ClInclude Include="Enemy_Class.h" />
     <ClInclude Include="EntityIdentifier.h" />
     <ClInclude Include="Framebuffer.h" />
     <ClInclude Include="Game.h" />

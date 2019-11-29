@@ -1,15 +1,18 @@
 ﻿  Game.cpp
 C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\HelloWorld\Game.cpp(110,6): warning C4101:  'mapArray': unreferenced local variable
-C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\HelloWorld\Game.cpp(701,65): warning C4244:  '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\HelloWorld\Game.cpp(702,65): warning C4244:  '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\HelloWorld\Game.cpp(703,65): warning C4244:  '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\HelloWorld\Game.cpp(724,86): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\HelloWorld\Game.cpp(725,86): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\HelloWorld\Game.cpp(766,62): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\HelloWorld\Game.cpp(766,56): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\HelloWorld\Game.cpp(818,26): warning C4305:  'initializing': truncation from 'double' to 'float'
-SOIL_ext.lib(etc1_utils.obj) : warning LNK4099: PDB 'soil2-debug.pdb' was not found with 'SOIL_ext.lib(etc1_utils.obj)' or at 'C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\x64\Debug\soil2-debug.pdb'; linking object as if no debug info
-SOIL_ext.lib(image_DXT.obj) : warning LNK4099: PDB 'soil2-debug.pdb' was not found with 'SOIL_ext.lib(image_DXT.obj)' or at 'C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\x64\Debug\soil2-debug.pdb'; linking object as if no debug info
-SOIL_ext.lib(image_helper.obj) : warning LNK4099: PDB 'soil2-debug.pdb' was not found with 'SOIL_ext.lib(image_helper.obj)' or at 'C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\x64\Debug\soil2-debug.pdb'; linking object as if no debug info
-SOIL_ext.lib(SOIL2.obj) : warning LNK4099: PDB 'soil2-debug.pdb' was not found with 'SOIL_ext.lib(SOIL2.obj)' or at 'C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\x64\Debug\soil2-debug.pdb'; linking object as if no debug info
+C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\HelloWorld\Game.cpp(721,65): warning C4244:  '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\HelloWorld\Game.cpp(722,65): warning C4244:  '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\HelloWorld\Game.cpp(723,65): warning C4244:  '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\HelloWorld\Game.cpp(744,86): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\HelloWorld\Game.cpp(745,86): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\HelloWorld\Game.cpp(786,62): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\HelloWorld\Game.cpp(786,56): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\HelloWorld\Game.cpp(837,12): warning C4244:  'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\HelloWorld\Game.cpp(839,22): warning C4244:  'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\HelloWorld\Game.cpp(840,21): warning C4244:  'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\HelloWorld\Game.cpp(848,26): warning C4305:  'initializing': truncation from 'double' to 'float'
+C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\HelloWorld\Game.cpp(861,15): warning C4305:  '=': truncation from 'double' to 'float'
+  main.cpp
+  Generating Code...
+C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\HelloWorld\Game.cpp(866,14): warning C4305:  '=': truncation from 'double' to 'float'
   HelloWorld.vcxproj -> C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\x64\Debug\HelloWorld.exe

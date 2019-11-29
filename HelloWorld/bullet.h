@@ -1,5 +1,8 @@
 #pragma once
 
+#include "time.h"
+
+
 struct Bullet
 {
 	int bulletID;

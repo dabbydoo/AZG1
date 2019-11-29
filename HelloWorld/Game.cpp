@@ -130,19 +130,22 @@ void Game::Update()
 
 	//Moving to the next room
 	if (playerPos.x > 190) {
-		
+		CreateBeetle();
 		m_register->get<Transform>(EntityIdentifier::MainPlayer()).SetPositionX((playerPos.x = -190));
 		m_xMap += 1;
 	}
 	if (playerPos.y > 100) {
+		
 		m_register->get<Transform>(EntityIdentifier::MainPlayer()).SetPositionY((playerPos.y = -100));
 		m_yMap -= 1;
 	}
 	if (playerPos.x < -190) {
+		
 		m_register->get<Transform>(EntityIdentifier::MainPlayer()).SetPositionX((playerPos.x = 190));
 		m_xMap -= 1;
 	}
 	if (playerPos.y < -100) {
+		
 		m_register->get<Transform>(EntityIdentifier::MainPlayer()).SetPositionY((playerPos.y = 100));
 		m_yMap += 1;
 
@@ -153,58 +156,71 @@ void Game::Update()
 	if (m_xMap == 1 && m_yMap == 1) {
 		//Load TopLeft
 		animControllerr.SetActiveAnim(0);
+		CreateBeetle();
 		CloseTop();
 		CloseLeft();
 		OpenBottom();
 		OpenRight();
+		
+
 	}
 	if (m_xMap == 1 && m_yMap == 2 || m_xMap == 1 && m_yMap == 3 || m_xMap == 1 && m_yMap == 4) {
 		//Load MiddleLeft
 		animControllerr.SetActiveAnim(3);
+		CreateBeetle();
 		CloseLeft();
 		OpenTop();
 		OpenBottom();
 		OpenRight();
+		
 	}
 	if (m_xMap == 1 && m_yMap == 5) {
 		//Load BottomLeft
 		animControllerr.SetActiveAnim(6);
+		CreateBeetle();
 		CloseLeft();
 		CloseBottom();
 		OpenTop();
 		OpenRight();
-	}
+		}
 
 	//Col 5
 	if (m_xMap == 5 && m_yMap == 1) {
 		//Load TopRight
 		animControllerr.SetActiveAnim(2);
+		CreateBeetle();
 		CloseTop();
 		CloseRight();
 		OpenBottom();
 		OpenLeft();
+		
 	}
 	if (m_xMap == 5 && m_yMap == 2 || m_xMap == 5 && m_yMap == 3 || m_xMap == 5 && m_yMap == 4) {
 		//Load MiddleRight
 		animControllerr.SetActiveAnim(5);
+		CreateBeetle();
 		CloseRight();
 		OpenTop();
 		OpenBottom();
 		OpenLeft();
+		
 	}
 	if (m_xMap == 5 && m_yMap == 5) {
 		//Load BottomRight
 		animControllerr.SetActiveAnim(8);
+		CreateBeetle();
 		CloseRight();
 		CloseBottom();
 		OpenTop();
 		OpenLeft();
+		
 	}
 
 	//Top middle
 	if (m_xMap == 2 && m_yMap == 1 || m_xMap == 3 && m_yMap == 1|| m_xMap == 4 && m_yMap == 1) {
 		//Load TopMiddle
 		animControllerr.SetActiveAnim(1);
+		CreateBeetle();
 		CloseTop();
 		OpenBottom();
 		OpenLeft();
@@ -215,21 +231,25 @@ void Game::Update()
 	if (m_xMap == 2 && m_yMap == 2 || m_xMap == 2 && m_yMap == 3 || m_xMap == 2 && m_yMap == 4 || m_xMap == 3 && m_yMap == 2 || m_xMap == 3 && m_yMap == 3 || m_xMap == 3 && m_yMap == 4 || m_xMap == 4 && m_yMap == 2 || m_xMap == 4 && m_yMap == 3 || m_xMap == 4 && m_yMap == 4) {
 		//Load Middle
 		animControllerr.SetActiveAnim(4);
+		//UpdateBeetle();
+		CreateBeetle();
 		OpenTop();
 		OpenBottom();
 		OpenLeft();
 		OpenRight();
+		
 	}
 
 	//Bottom Middle
 	if (m_xMap == 2 && m_yMap == 5 || m_xMap == 3 && m_yMap == 5 || m_xMap == 4 && m_yMap == 5) {
 		//Load BottomMiddle
 		animControllerr.SetActiveAnim(7);
+		CreateBeetle();
 		CloseBottom();
 		OpenTop();
 		OpenLeft();
 		OpenRight();
-	}
+		}
 
 
 
@@ -262,7 +282,7 @@ void Game::CheckEvents()
 
 
 
-	CreateBeetle();
+	//CreateBeetle();
 
 	
 	
@@ -809,39 +829,10 @@ bool Game::isHitBorder(Bullet bullet)
 }
 
 void Game::CreateBeetle()
-/*
+
 {
+	Enemy Beetle;
 
-	HelloWorld* scene = (HelloWorld*)m_activeScene;
-	auto entity = scene->Beetle();
-	auto& animController = ECS::GetComponent<AnimationController>(entity);
-	static float try2 = 0.35;
-
-	vec3 Beetleposition = m_register->get<Transform>(entity).GetPosition();
-	//ECS::GetComponent<Transform>(entity).SetPosition(vec3(-115.f, -25.f, 20.f));
-
-	animController.SetActiveAnim(0);
-	auto& anim = animController.GetAnimation(0);
-
-	if (Beetleposition.x <= 135 && Beetleposition.y == -25) {
-		m_register->get<Transform>(entity).SetPositionX(Beetleposition.x + try2);
-	}
-
-	if (Beetleposition.x > 135) {
-		m_register->get<Transform>(entity).SetPositionY(Beetleposition.y = -24.75);
-	}
-
-	if (Beetleposition.y == -24.75) {
-
-		m_register->get<Transform>(entity).SetPositionX(Beetleposition.x - try2);
-	}
-
-	if (Beetleposition.x < -137) {
-		m_register->get<Transform>(entity).SetPositionY(Beetleposition.y = -25);
-	}
-}
-*/
-{
 	static int randomY;
 	srand(time(NULL));
 	randomY = rand() % 140 + (-65);
@@ -850,6 +841,9 @@ void Game::CreateBeetle()
 
 	HelloWorld* scene = (HelloWorld*)m_activeScene;
 	auto entity = scene->Beetle();
+	
+	Beetle.EnemyID = entity;
+
 	auto& animController = ECS::GetComponent<AnimationController>(entity);
 	static float try2 = 0.35;
 	
@@ -872,27 +866,15 @@ void Game::CreateBeetle()
 		try2 = 0.35;
 	}
 
-	/*
-	// checks if beetle is in left boundary & position is at the start
-	if (Beetleposition.x <= 135 && Beetleposition.y == YPlus) {
-		m_register->get<Transform>(entity).SetPositionX(Beetleposition.x + try2);
-	}
-	else if (Beetleposition.x >= -135 && Beetleposition.y == YMinus) {
-		m_register->get<Transform>(entity).SetPositionX(Beetleposition.x - try2);
-	}
-	// if beetle reaches far right, set position slightly up on Y
-	if (Beetleposition.x >=135) {
-		m_register->get<Transform>(entity).SetPositionY(Beetleposition.y = YMinus);
-	}
-	// if it is slightly up, then go backwards
-	
-	// it it gets back to the left wall, it will repeat
-	else if (Beetleposition.x <= -135) {
-		m_register->get<Transform>(entity).SetPositionY(Beetleposition.y = YPlus);
-	}
-	*/
-	
 }
 
+void Game::UpdateBeetle()
+{
+	for (int i = 0; i < m_Bettle_spawn.size(); i++)
+	{
+			ECS::DestroyEntity(m_Bettle_spawn[i].EnemyID);
+			m_Bettle_spawn.erase(m_Bettle_spawn.begin() + i);
 
+		}
+}
 
