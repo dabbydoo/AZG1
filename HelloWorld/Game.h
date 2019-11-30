@@ -93,7 +93,7 @@ public:
 
 	void ShadowEffect();
 
-	bool contact();
+	bool player_in_room();
 
 private:
 	//The window

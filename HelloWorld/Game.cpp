@@ -996,21 +996,18 @@ void Game::UpdateBeetle()
 
 		x = ECS::GetComponent<Transform>(m_Bettle_spawn[i].EnemyID).GetPositionX();
 
-		if (x >= 140 ) {
+		if (m_Bettle_spawn[i].xPos >= 135|| m_Bettle_spawn[i].xPos <= -135)
 			m_Bettle_spawn[i].xDir *= -1.f;
-			std::cout << "Reached";
-		}
+		
+			
+		
 
-		 if (x <= -134) {
-			 m_Bettle_spawn[i].xDir *= -1.f;
-			std::cout << "reached here too";
-		}
+		if (!!player_in_room()) {
 
-		/*if (velocity>0.35) {
 			ECS::DestroyEntity(m_Bettle_spawn[i].EnemyID);
 			m_Bettle_spawn.erase(m_Bettle_spawn.begin() + i);
-			std::cout << "Hi";
-		}*/
+			
+		}
 		
 		}
 }
@@ -1099,8 +1096,17 @@ void Game::ShadowEffect()
 	//float opacity = temp->GetOpacity();
 }
 
-bool Game::contact()
+bool Game::player_in_room()
 {
+
+	auto pos = m_register->get<Transform>(EntityIdentifier::MainPlayer()).GetPosition();
+	
+	if (pos.x > 190.0f || pos.x < -190.0f || pos.y > 100.0f || pos.y < -100.0f) 
+		return true;
+	
+	else
 	return false;
 }
+
+
 

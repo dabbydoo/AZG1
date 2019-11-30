@@ -1,20 +1,22 @@
 ﻿  Game.cpp
-C:\Users\prana\Documents\repos\AZG1\HelloWorld\Game.cpp(127,6): warning C4101:  'mapArray': unreferenced local variable
-C:\Users\prana\Documents\repos\AZG1\HelloWorld\Game.cpp(771,65): warning C4244:  '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\prana\Documents\repos\AZG1\HelloWorld\Game.cpp(772,65): warning C4244:  '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\prana\Documents\repos\AZG1\HelloWorld\Game.cpp(773,65): warning C4244:  '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\prana\Documents\repos\AZG1\HelloWorld\Game.cpp(794,86): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\prana\Documents\repos\AZG1\HelloWorld\Game.cpp(795,86): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\prana\Documents\repos\AZG1\HelloWorld\Game.cpp(836,62): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\prana\Documents\repos\AZG1\HelloWorld\Game.cpp(836,56): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\prana\Documents\repos\AZG1\HelloWorld\Game.cpp(922,12): warning C4244:  'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\Users\prana\Documents\repos\AZG1\HelloWorld\Game.cpp(923,25): warning C4244:  '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\prana\Documents\repos\AZG1\HelloWorld\Game.cpp(1024,12): warning C4244:  'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\Users\prana\Documents\repos\AZG1\HelloWorld\Game.cpp(1025,21): warning C4244:  '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\prana\Documents\repos\AZG1\HelloWorld\Game.cpp(1027,12): warning C4244:  'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\Users\prana\Documents\repos\AZG1\HelloWorld\Game.cpp(1028,21): warning C4244:  '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\prana\Documents\repos\AZG1\HelloWorld\Game.cpp(1068,12): warning C4244:  'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\Users\prana\Documents\repos\AZG1\HelloWorld\Game.cpp(1069,25): warning C4244:  '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\prana\Documents\repos\AZG1\HelloWorld\Game.cpp(1072,12): warning C4244:  'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\Users\prana\Documents\repos\AZG1\HelloWorld\Game.cpp(1073,24): warning C4244:  '=': conversion from 'int' to 'float', possible loss of data
-  HelloWorld.vcxproj -> C:\Users\prana\Documents\repos\AZG1\x64\Debug\HelloWorld.exe
+C:\Users\farha\AZG1\HelloWorld\Game.cpp(127,6): warning C4101: 'mapArray': unreferenced local variable
+C:\Users\farha\AZG1\HelloWorld\Game.cpp(771,65): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\farha\AZG1\HelloWorld\Game.cpp(772,65): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\farha\AZG1\HelloWorld\Game.cpp(773,65): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\farha\AZG1\HelloWorld\Game.cpp(794,86): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\farha\AZG1\HelloWorld\Game.cpp(795,86): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\farha\AZG1\HelloWorld\Game.cpp(836,62): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\farha\AZG1\HelloWorld\Game.cpp(836,56): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\farha\AZG1\HelloWorld\Game.cpp(922,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\farha\AZG1\HelloWorld\Game.cpp(923,25): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\farha\AZG1\HelloWorld\Game.cpp(1021,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\farha\AZG1\HelloWorld\Game.cpp(1022,21): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\farha\AZG1\HelloWorld\Game.cpp(1024,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\farha\AZG1\HelloWorld\Game.cpp(1025,21): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\farha\AZG1\HelloWorld\Game.cpp(1065,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\farha\AZG1\HelloWorld\Game.cpp(1066,25): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\farha\AZG1\HelloWorld\Game.cpp(1069,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  main.cpp
+  Generating Code...
+C:\Users\farha\AZG1\HelloWorld\Game.cpp(1070,24): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  HelloWorld.vcxproj -> C:\Users\farha\AZG1\x64\Debug\HelloWorld.exe
