@@ -334,7 +334,7 @@ void Game::CheckEvents()
 	//ShadowEffect();
 	
 	
-	
+	EffectManager::CreateLighting();
 
 	
 	
@@ -1089,7 +1089,7 @@ void Game::CreateBoss()
 void Game::ShadowEffect()
 {
 
-	//VignetteEffect* temp = (VignetteEffect*)EffectManager::GetEffect(m_vignette);
+	//VignetteEffect* temp = (VignetteEffect*)EffectManager::GetEffect(EffectManager::m_vignette);
 	EffectManager::CreateEffect(Vignette, BackEnd::GetWindowWidth(), BackEnd::GetWindowHeight());
 	//float innerradius = temp->GetInnerRadius();
 	//float outerradius = temp->GetOuterRadius();

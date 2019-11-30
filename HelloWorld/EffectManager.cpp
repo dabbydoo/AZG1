@@ -1,9 +1,11 @@
 #include "EffectManager.h"
+#include "Game.h"
 
 Selectable EffectManager::m_selectable = Selectable("Effect Editor");
 
 int EffectManager::m_numEffects = 0;
 bool EffectManager::m_effectsInit = false;
+bool lighting = true;
 
 int EffectManager::m_greyscale = -1;
 int EffectManager::m_sepia = -1;
@@ -108,7 +110,8 @@ void EffectManager::CreateEditor()
 
 				ImGui::Text("Currently Attached");
 
-				if (ImGui::DragFloat("Inner Radius", &innerradius, 0.01f, 0.f, 1.f)) {
+				if (ImGui::DragFloat("Inner Radius", &innerradius, 0.01f, 0.f, 1.f) || Input::GetKeyDown(Key::L)) {
+					innerradius = innerradius -0.3;
 					temp->SetInnerRadius(innerradius);
 				}
 				if (ImGui::DragFloat("Outer Radius", &outerradius, 0.01f, 0.f, 1.f)) {
@@ -133,7 +136,36 @@ void EffectManager::CreateEditor()
 			ImGui::TreePop();
 		}
 	}
+	
 }
+
+void EffectManager::CreateLighting()
+{
+	if (lighting == true) {
+		VignetteEffect* temp = (VignetteEffect*)EffectManager::GetEffect(m_vignette);
+		float innerradius = temp->GetInnerRadius();
+		float outerradius = temp->GetOuterRadius();
+		float opacity = temp->GetOpacity();
+
+
+		if (Input::GetKeyDown(Key::L)) {
+			innerradius = innerradius - 0.3;
+			temp->SetInnerRadius(innerradius);
+		}
+		if (Input::GetKeyDown(Key::P)) {
+			outerradius = outerradius - 0.1;
+			temp->SetOuterRadius(outerradius);
+		}
+		if (Input::GetKeyDown(Key::M)) {
+			opacity = opacity + 0.1;
+			temp->SetOpacity(opacity);
+		}
+		if (Input::GetKeyDown(Key::K)) {
+			EffectManager::RemoveEffect(m_vignette);
+		}
+	}
+}
+
 
 
 

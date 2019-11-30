@@ -38,6 +38,7 @@ public:
 
 	static void CreateTab();
 	static void CreateEditor();
+	static void CreateLighting();
 
 	//Initialize effect manager
 	static void InitEffectManager(unsigned width, unsigned height);
