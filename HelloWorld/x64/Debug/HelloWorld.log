@@ -1,39 +1,20 @@
-﻿  BackEnd.cpp
-  EffectManager.cpp
-  Game.cpp
-C:\Users\farha\AZG1\HelloWorld\Game.cpp(127,6): warning C4101: 'mapArray': unreferenced local variable
-C:\Users\farha\AZG1\HelloWorld\Game.cpp(768,65): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\farha\AZG1\HelloWorld\Game.cpp(769,65): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\farha\AZG1\HelloWorld\Game.cpp(770,65): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\farha\AZG1\HelloWorld\Game.cpp(791,86): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\farha\AZG1\HelloWorld\Game.cpp(792,86): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\farha\AZG1\HelloWorld\Game.cpp(833,62): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\farha\AZG1\HelloWorld\Game.cpp(833,56): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\farha\AZG1\HelloWorld\Game.cpp(919,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\Users\farha\AZG1\HelloWorld\Game.cpp(920,25): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\farha\AZG1\HelloWorld\Game.cpp(925,67): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\farha\AZG1\HelloWorld\Game.cpp(927,67): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\farha\AZG1\HelloWorld\Game.cpp(980,30): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\farha\AZG1\HelloWorld\Game.cpp(985,37): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
-C:\Users\farha\AZG1\HelloWorld\Game.cpp(987,89): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\farha\AZG1\HelloWorld\Game.cpp(1019,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\Users\farha\AZG1\HelloWorld\Game.cpp(1020,21): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\farha\AZG1\HelloWorld\Game.cpp(1022,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\Users\farha\AZG1\HelloWorld\Game.cpp(1023,21): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\farha\AZG1\HelloWorld\Game.cpp(1063,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\Users\farha\AZG1\HelloWorld\Game.cpp(1064,25): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\farha\AZG1\HelloWorld\Game.cpp(1067,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\Users\farha\AZG1\HelloWorld\Game.cpp(1068,24): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\farha\AZG1\HelloWorld\Game.cpp(1072,64): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-  HelloWorld.cpp
-C:\Users\farha\AZG1\HelloWorld\Game.cpp(1074,64): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\farha\AZG1\HelloWorld\HelloWorld.cpp(392,67): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-  RenderingSystem.cpp
-  main.cpp
-  Generating Code...
-C:\Users\farha\AZG1\HelloWorld\HelloWorld.cpp(392,59): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-SOIL_ext.lib(etc1_utils.obj) : warning LNK4099: PDB 'soil2-debug.pdb' was not found with 'SOIL_ext.lib(etc1_utils.obj)' or at 'C:\Users\farha\AZG1\x64\Debug\soil2-debug.pdb'; linking object as if no debug info
-SOIL_ext.lib(image_DXT.obj) : warning LNK4099: PDB 'soil2-debug.pdb' was not found with 'SOIL_ext.lib(image_DXT.obj)' or at 'C:\Users\farha\AZG1\x64\Debug\soil2-debug.pdb'; linking object as if no debug info
-SOIL_ext.lib(image_helper.obj) : warning LNK4099: PDB 'soil2-debug.pdb' was not found with 'SOIL_ext.lib(image_helper.obj)' or at 'C:\Users\farha\AZG1\x64\Debug\soil2-debug.pdb'; linking object as if no debug info
-SOIL_ext.lib(SOIL2.obj) : warning LNK4099: PDB 'soil2-debug.pdb' was not found with 'SOIL_ext.lib(SOIL2.obj)' or at 'C:\Users\farha\AZG1\x64\Debug\soil2-debug.pdb'; linking object as if no debug info
-  HelloWorld.vcxproj -> C:\Users\farha\AZG1\x64\Debug\HelloWorld.exe
+﻿  Game.cpp
+C:\Users\prana\Documents\repos\AZG1\HelloWorld\Game.cpp(127,6): warning C4101:  'mapArray': unreferenced local variable
+C:\Users\prana\Documents\repos\AZG1\HelloWorld\Game.cpp(771,65): warning C4244:  '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\prana\Documents\repos\AZG1\HelloWorld\Game.cpp(772,65): warning C4244:  '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\prana\Documents\repos\AZG1\HelloWorld\Game.cpp(773,65): warning C4244:  '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\prana\Documents\repos\AZG1\HelloWorld\Game.cpp(794,86): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\prana\Documents\repos\AZG1\HelloWorld\Game.cpp(795,86): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\prana\Documents\repos\AZG1\HelloWorld\Game.cpp(836,62): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\prana\Documents\repos\AZG1\HelloWorld\Game.cpp(836,56): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\prana\Documents\repos\AZG1\HelloWorld\Game.cpp(922,12): warning C4244:  'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\prana\Documents\repos\AZG1\HelloWorld\Game.cpp(923,25): warning C4244:  '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\prana\Documents\repos\AZG1\HelloWorld\Game.cpp(1024,12): warning C4244:  'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\prana\Documents\repos\AZG1\HelloWorld\Game.cpp(1025,21): warning C4244:  '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\prana\Documents\repos\AZG1\HelloWorld\Game.cpp(1027,12): warning C4244:  'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\prana\Documents\repos\AZG1\HelloWorld\Game.cpp(1028,21): warning C4244:  '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\prana\Documents\repos\AZG1\HelloWorld\Game.cpp(1068,12): warning C4244:  'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\prana\Documents\repos\AZG1\HelloWorld\Game.cpp(1069,25): warning C4244:  '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\prana\Documents\repos\AZG1\HelloWorld\Game.cpp(1072,12): warning C4244:  'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\prana\Documents\repos\AZG1\HelloWorld\Game.cpp(1073,24): warning C4244:  '=': conversion from 'int' to 'float', possible loss of data
+  HelloWorld.vcxproj -> C:\Users\prana\Documents\repos\AZG1\x64\Debug\HelloWorld.exe

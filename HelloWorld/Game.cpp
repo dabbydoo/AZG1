@@ -142,6 +142,9 @@ void Game::Update()
 
 	//Update Explosion
 	UpdateExplosion();
+
+	UpdateBeetle();
+
 	
 	auto& animControllerr = ECS::GetComponent<AnimationController>(1);
 
@@ -275,7 +278,7 @@ void Game::Update()
 			CreateBeetle();
 		}
 
-		Game::UpdateBeetle();
+		
 		OpenTop();
 		OpenBottom();
 		OpenLeft();
@@ -912,7 +915,7 @@ void Game::CreateBeetle()
 		//gets first animation
 		auto& anim = animController.GetAnimation(0);
 
-		ECS::GetComponent<Sprite>(entityB).LoadSprite(image, 86 / 4, 87 / 4, true, &animController);
+		ECS::GetComponent<Sprite>(entityB).LoadSprite(image, 15, 15, true, &animController);
 
 		
 	float randomY;
@@ -977,35 +980,37 @@ void Game::CreateBeetle()
 
 void Game::UpdateBeetle()
 {
-	static float velocity = 0.35;
+	
 	
 	
 	for (int i = 0; i < m_Bettle_spawn.size(); i++)
 	{
-		m_Bettle_spawn[i].xPos += velocity;
+
+		float x;
+		m_Bettle_spawn[i].xPos += m_Bettle_spawn[i].xDir;
 	
 		ECS::GetComponent<Transform>(m_Bettle_spawn[i].EnemyID).SetPositionX(m_Bettle_spawn[i].xPos);
 		//ECS::GetComponent<Transform>(m_Bettle_spawn[i].EnemyID).SetPositionY(m_Bettle_spawn[i].yPos);
 
-		std::cout << velocity << std::endl;
+		std::cout << m_Bettle_spawn[i].xPos << std::endl;
 
+		x = ECS::GetComponent<Transform>(m_Bettle_spawn[i].EnemyID).GetPositionX();
 
-
-		if (m_Bettle_spawn[i].xPos >= 134 ) {
-			velocity *= -1.f;
+		if (x >= 140 ) {
+			m_Bettle_spawn[i].xDir *= -1.f;
 			std::cout << "Reached";
 		}
 
-		else if (m_Bettle_spawn[i].xPos <= -134) {
-			velocity *= -1.f;
+		 if (x <= -134) {
+			 m_Bettle_spawn[i].xDir *= -1.f;
 			std::cout << "reached here too";
 		}
 
-		if (velocity>0.35) {
+		/*if (velocity>0.35) {
 			ECS::DestroyEntity(m_Bettle_spawn[i].EnemyID);
 			m_Bettle_spawn.erase(m_Bettle_spawn.begin() + i);
 			std::cout << "Hi";
-		}
+		}*/
 		
 		}
 }

@@ -4,6 +4,6 @@
 struct Enemy
 {
 	int EnemyID;
-	int xPos, yPos, zPos;
-	int xDir, yDir;
+	float xPos, yPos, zPos;
+	float xDir = 0.4f, yDir;
 };
