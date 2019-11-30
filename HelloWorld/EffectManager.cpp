@@ -149,10 +149,19 @@ void EffectManager::CreateLighting()
 
 
 		if (Input::GetKeyDown(Key::L)) {
-			innerradius = innerradius - 0.3;
+			innerradius = innerradius - 0.5;
 			temp->SetInnerRadius(innerradius);
+			if (innerradius <= -2.3) {
+				for (int i = 0; i <= 100; i++) {
+					innerradius--;
+					opacity++;
+					outerradius = 0.01;
+					
+				}
+				std::cout << "\nGame Over \n";
+			}
 		}
-		if (Input::GetKeyDown(Key::P)) {
+		/*if (Input::GetKeyDown(Key::P)) {
 			outerradius = outerradius - 0.1;
 			temp->SetOuterRadius(outerradius);
 		}
@@ -162,7 +171,7 @@ void EffectManager::CreateLighting()
 		}
 		if (Input::GetKeyDown(Key::K)) {
 			EffectManager::RemoveEffect(m_vignette);
-		}
+		}*/
 	}
 }
 
