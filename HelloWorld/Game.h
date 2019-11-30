@@ -87,13 +87,18 @@ public:
 
 	void CreateBeetle();
 
+	void UpdateLizard();
+
 	void UpdateBeetle();
+
+	void CreateLizard();
 
 	void CreateBoss();
 
 	void ShadowEffect();
 
 	bool player_in_room();
+//	void Create_close_room();
 
 private:
 	//The window
@@ -125,6 +130,7 @@ private:
 	//Bullet
 	std::vector<Bullet> m_bulletList;
 	std::vector<Enemy>m_Bettle_spawn;
+	std::vector<Enemy>m_Lizard_spawn;
 
 	//Bullet fire rate
 	int m_fireRate = 25;

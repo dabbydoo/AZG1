@@ -148,6 +148,8 @@ void EffectManager::CreateLighting()
 		float opacity = temp->GetOpacity();
 
 
+		auto position = ECS::GetComponent<Transform>(EntityIdentifier::MainPlayer()).GetPosition();
+
 		if (Input::GetKeyDown(Key::L)) {
 			innerradius = innerradius - 0.5;
 			temp->SetInnerRadius(innerradius);

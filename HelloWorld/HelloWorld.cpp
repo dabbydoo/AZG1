@@ -389,9 +389,9 @@ void HelloWorld::InitScene(float windowWidth, float windowHeight)
 		//gets first animation
 		auto& anim = animController.GetAnimation(0);
 
-		ECS::GetComponent<Sprite>(entityL).LoadSprite(Lizard, 60/1.75,49/1.75, true, &animController);
+		//ECS::GetComponent<Sprite>(entityL).LoadSprite(Lizard, 60/1.75,49/1.75, true, &animController);
 		ECS::GetComponent<Sprite>(entityL).SetUVs(vec2(1.f, 50.f), vec2(59.f, 1.f));
-		ECS::GetComponent<Transform>(entityL).SetPosition(vec3(-70.f, 50.f, 21.f));
+		//ECS::GetComponent<Transform>(entityL).SetPosition(vec3(-70.f, 50.f, 21.f));
 
 		//Setup up the Identifier
 		unsigned int bitHolder = EntityIdentifier::SpriteBit() | EntityIdentifier::TransformBit() | EntityIdentifier::AnimationBit();
@@ -451,6 +451,12 @@ int HelloWorld::Beetle()
 {
 	return m_BeetleEntity;
 }
+
+int HelloWorld::Lizard()
+{
+	return m_LizardEntity;
+}
+
 int HelloWorld::Menu()
 {
 	return m_entityMenu;

@@ -9,9 +9,11 @@ public:
 	int m_entitySpaceRanger;
 	int m_entitybullet;
 	int m_BeetleEntity;
+	int m_LizardEntity;
 	int m_entityMenu;
 	int SpaceRanger();
 	int bullet();
 	int Beetle();
+	int Lizard();
 	int Menu();
 };

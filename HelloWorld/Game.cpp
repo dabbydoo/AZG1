@@ -8,6 +8,9 @@
 
 int BossNum = 0;
 int BeetleNum = 0;
+int LizardNum = 0;
+
+
 
 Game::~Game()
 {
@@ -145,6 +148,8 @@ void Game::Update()
 
 	UpdateBeetle();
 
+	UpdateLizard();
+
 	
 	auto& animControllerr = ECS::GetComponent<AnimationController>(1);
 
@@ -176,8 +181,14 @@ void Game::Update()
 	if (m_xMap == 1 && m_yMap == 1) {
 		//Load TopLeft
 		animControllerr.SetActiveAnim(0);
-		if (BeetleNum < 1) {
+		UpdateBeetle();
+		UpdateLizard();
+		if (BeetleNum < 2) {
 			CreateBeetle();
+
+		}
+		if (LizardNum < 1) {
+			CreateLizard();
 		}
 
 		CloseTop();
@@ -190,9 +201,16 @@ void Game::Update()
 	if (m_xMap == 1 && m_yMap == 2 || m_xMap == 1 && m_yMap == 3 || m_xMap == 1 && m_yMap == 4) {
 		//Load MiddleLeft
 		animControllerr.SetActiveAnim(3);
-		if (BeetleNum < 1) {
+		UpdateBeetle();
+		UpdateLizard();
+		if (BeetleNum < 2) {
 			CreateBeetle();
+
 		}
+		if (LizardNum < 1) {
+			CreateLizard();
+		}
+
 
 		CloseLeft();
 		OpenTop();
@@ -203,8 +221,14 @@ void Game::Update()
 	if (m_xMap == 1 && m_yMap == 5) {
 		//Load BottomLeft
 		animControllerr.SetActiveAnim(6);
-		if (BeetleNum < 1) {
+		UpdateBeetle();
+		UpdateLizard();
+		if (BeetleNum < 2) {
 			CreateBeetle();
+
+		}
+		if (LizardNum < 1) {
+			CreateLizard();
 		}
 
 		CloseLeft();
@@ -217,8 +241,14 @@ void Game::Update()
 	if (m_xMap == 5 && m_yMap == 1) {
 		//Load TopRight
 		animControllerr.SetActiveAnim(2);
-		if (BeetleNum < 1) {
+		UpdateBeetle();
+		UpdateLizard();
+		if (BeetleNum < 2) {
 			CreateBeetle();
+
+		}
+		if (LizardNum < 1) {
+			CreateLizard();
 		}
 
 		CloseTop();
@@ -230,8 +260,14 @@ void Game::Update()
 	if (m_xMap == 5 && m_yMap == 2 || m_xMap == 5 && m_yMap == 3 || m_xMap == 5 && m_yMap == 4) {
 		//Load MiddleRight
 		animControllerr.SetActiveAnim(5);
-		if (BeetleNum < 1) {
+		UpdateBeetle();
+		UpdateLizard();
+		if (BeetleNum < 2) {
 			CreateBeetle();
+
+		}
+		if (LizardNum < 2) {
+			CreateLizard();
 		}
 
 		CloseRight();
@@ -243,8 +279,14 @@ void Game::Update()
 	if (m_xMap == 5 && m_yMap == 5) {
 		//Load BottomRight
 		animControllerr.SetActiveAnim(8);
-		if (BeetleNum < 1) {
+		UpdateBeetle();
+		UpdateLizard();
+		if (BeetleNum < 2) {
 			CreateBeetle();
+
+		}
+		if (LizardNum < 1) {
+			CreateLizard();
 		}
 
 		CloseRight();
@@ -258,8 +300,14 @@ void Game::Update()
 	if (m_xMap == 2 && m_yMap == 1 || m_xMap == 3 && m_yMap == 1|| m_xMap == 4 && m_yMap == 1) {
 		//Load TopMiddle
 		animControllerr.SetActiveAnim(1);
-		if (BeetleNum < 1) {
+		UpdateBeetle();
+		UpdateLizard();
+		if (BeetleNum < 2) {
 			CreateBeetle();
+			
+		}
+		if (LizardNum < 1) {
+			CreateLizard();
 		}
 
 		CloseTop();
@@ -273,11 +321,16 @@ void Game::Update()
 		//Load Middle
 	//	std::cout << "I am in the middle room"<<std::endl;
 		animControllerr.SetActiveAnim(4);
+		UpdateBeetle();
+		UpdateLizard();
 		//UpdateBeetle();
 		if (BeetleNum < 1) {
 			CreateBeetle();
-		}
 
+		}
+		if (LizardNum < 1) {
+			CreateLizard();
+		}
 		
 		OpenTop();
 		OpenBottom();
@@ -290,8 +343,11 @@ void Game::Update()
 	if (m_xMap == 2 && m_yMap == 5 || m_xMap == 3 && m_yMap == 5 || m_xMap == 4 && m_yMap == 5) {
 		//Load BottomMiddle
 		animControllerr.SetActiveAnim(7);
-		if (BeetleNum < 1) {
+		UpdateBeetle();
+		UpdateLizard();
+		if (BeetleNum < 1 && LizardNum < 1) {
 			CreateBeetle();
+			CreateLizard();
 		}
 
 		CloseBottom();
@@ -794,14 +850,19 @@ void Game::UpdateBullet()
 		ECS::GetComponent<Transform>(m_bulletList[i].bulletID).SetPositionX(m_bulletList[i].xPos);
 		ECS::GetComponent<Transform>(m_bulletList[i].bulletID).SetPositionY(m_bulletList[i].yPos);
 		
-		if (isHitBorder(m_bulletList[i]))
-		{
-				
+		if (!player_in_room()) {
+			ECS::DestroyEntity(m_bulletList[i].bulletID);
+			m_bulletList.erase(m_bulletList.begin() + i);
+		}
+
+		 if (isHitBorder(m_bulletList[i]))
+		{		
 			ECS::DestroyEntity(m_bulletList[i].bulletID);
 			CreateExplosion(m_bulletList[i].xPos, m_bulletList[i].yPos);
 			m_bulletList.erase(m_bulletList.begin() + i);
 			
 		}
+		
 	}
 }
 
@@ -919,7 +980,7 @@ void Game::CreateBeetle()
 
 		
 	float randomY;
-	srand(time(NULL));
+	
 	randomY = rand() % 140 + (-65);
 
 		
@@ -935,47 +996,11 @@ void Game::CreateBeetle()
 		unsigned int bitHolder = EntityIdentifier::SpriteBit() | EntityIdentifier::TransformBit() | EntityIdentifier::AnimationBit();
 		ECS::SetUpIdentifier(entityB, bitHolder, "Beetle Enemy");
 
-		BeetleNum = 1;
+		BeetleNum += 1;
 
 		
 
-	/*
-		static int randomY;
-		srand(time(NULL));
-		randomY = rand() % 140 + (-65);
-		static float YMinus = (randomY - 0.25);
-		static float YPlus = (randomY + 0.25);
 
-
-
-	HelloWorld* scene = (HelloWorld*)m_activeScene;
-	auto entity = scene->Beetle();
-	
-
-
-
-	auto& animController = ECS::GetComponent<AnimationController>(entity);
-	static float try2 = 0.35;
-	
-
-	 vec3 Beetleposition = m_register->get<Transform>(entity).GetPosition();
-	ECS::GetComponent<Transform>(entity).SetPosition(vec3(-115.f, YPlus, 20.f));
-
-	animController.SetActiveAnim(0);
-	auto& anim = animController.GetAnimation(0);
-
-
-	m_register->get<Transform>(entity).SetPositionX(Beetleposition.x + try2);
-
-	if (Beetleposition.x>=134) {
-		try2 =-0.35 ;
-	}
-
-
-	else if (Beetleposition.x <= -134) {
-		try2 = 0.35;
-	}
-*/
 }
 
 void Game::UpdateBeetle()
@@ -985,31 +1010,121 @@ void Game::UpdateBeetle()
 	
 	for (int i = 0; i < m_Bettle_spawn.size(); i++)
 	{
-
-		float x;
-		m_Bettle_spawn[i].xPos += m_Bettle_spawn[i].xDir;
+		m_Bettle_spawn[i].xPos += m_Bettle_spawn[i].xDir*0.4;
 	
 		ECS::GetComponent<Transform>(m_Bettle_spawn[i].EnemyID).SetPositionX(m_Bettle_spawn[i].xPos);
+		auto player = ECS::GetComponent<Transform>(EntityIdentifier::MainPlayer()).GetPosition();
 		//ECS::GetComponent<Transform>(m_Bettle_spawn[i].EnemyID).SetPositionY(m_Bettle_spawn[i].yPos);
 
-		std::cout << m_Bettle_spawn[i].xPos << std::endl;
-
-		x = ECS::GetComponent<Transform>(m_Bettle_spawn[i].EnemyID).GetPositionX();
 
 		if (m_Bettle_spawn[i].xPos >= 135|| m_Bettle_spawn[i].xPos <= -135)
 			m_Bettle_spawn[i].xDir *= -1.f;
 		
-			
-		
 
-		if (!!player_in_room()) {
+		if (!player_in_room()) {
 
 			ECS::DestroyEntity(m_Bettle_spawn[i].EnemyID);
 			m_Bettle_spawn.erase(m_Bettle_spawn.begin() + i);
-			
+			BeetleNum = 0;
 		}
 		
 		}
+}
+
+void Game::CreateLizard()
+
+{
+	//enemy = true;
+	Enemy Lizard;
+
+
+
+	//Beetle animation file
+	auto Moving = File::LoadJSON("Lizard.json");
+
+	//Creates entity Beetle
+	auto entityL = ECS::CreateEntity();
+
+	//Add components
+	ECS::AttachComponent<Sprite>(entityL);
+	ECS::AttachComponent<Transform>(entityL);
+	ECS::AttachComponent<AnimationController>(entityL);
+
+	//Sets up components
+	std::string image = "Lizard.png";
+	auto& animController = ECS::GetComponent<AnimationController>(entityL);
+	animController.InitUVs(image);
+
+	//Adds first Animation
+	animController.AddAnimation(Moving["left_walk"]);
+	animController.AddAnimation(Moving["right_walk"]);
+	animController.AddAnimation(Moving["left_still"]);
+	animController.AddAnimation(Moving["right_still"]);
+
+
+	Lizard.EnemyID = entityL;
+
+	//Set first anitmation
+	animController.SetActiveAnim(1);
+
+	//gets first animation
+
+	ECS::GetComponent<Sprite>(entityL).LoadSprite(image, 60/1.75, 49/1.75, true, &animController);
+
+
+	float Y;
+	
+	Y = rand() % 140 + (-65);
+
+	
+	ECS::GetComponent<Transform>(entityL).SetPosition(vec3(-115.f, Y, 20.f));
+
+	Lizard.xPos = ECS::GetComponent<Transform>(entityL).GetPositionX();
+
+	Lizard.yPos = ECS::GetComponent<Transform>(entityL).GetPositionY();
+	Lizard.change = Lizard.xDir;
+
+	m_Lizard_spawn.push_back(Lizard);
+
+	//Setup up the Identifier
+	unsigned int bitHolder = EntityIdentifier::SpriteBit() | EntityIdentifier::TransformBit() | EntityIdentifier::AnimationBit();
+	ECS::SetUpIdentifier(entityL, bitHolder, "Lizard Enemy");
+
+	LizardNum += 1;
+
+}
+
+void Game::UpdateLizard()
+{
+
+	for (int i = 0; i < m_Lizard_spawn.size(); i++)
+	{
+		auto& animController = ECS::GetComponent<AnimationController>(m_Lizard_spawn[i].EnemyID);
+	
+		m_Lizard_spawn[i].xPos += (m_Lizard_spawn[i].xDir*0.25);
+
+		ECS::GetComponent<Transform>(m_Lizard_spawn[i].EnemyID).SetPositionX(m_Lizard_spawn[i].xPos);
+		//ECS::GetComponent<Transform>(m_Bettle_spawn[i].EnemyID).SetPositionY(m_Bettle_spawn[i].yPos);
+
+		if (m_Lizard_spawn[i].xPos >= 135 || m_Lizard_spawn[i].xPos <= -135) {
+			
+			m_Lizard_spawn[i].change = 1 - m_Lizard_spawn[i].change;
+			m_Lizard_spawn[i].xDir *= -1.f;
+			animController.SetActiveAnim(m_Lizard_spawn[i].change);
+			
+
+		}
+
+
+		if (!player_in_room()) {
+
+			ECS::DestroyEntity(m_Lizard_spawn[i].EnemyID);
+			m_Lizard_spawn.erase(m_Lizard_spawn.begin() + i);
+
+			LizardNum = 0;
+		}
+
+	}
 }
 
 
@@ -1102,10 +1217,10 @@ bool Game::player_in_room()
 	auto pos = m_register->get<Transform>(EntityIdentifier::MainPlayer()).GetPosition();
 	
 	if (pos.x > 190.0f || pos.x < -190.0f || pos.y > 100.0f || pos.y < -100.0f) 
-		return true;
+		return false;
 	
 	else
-	return false;
+	return true;
 }
 
 
