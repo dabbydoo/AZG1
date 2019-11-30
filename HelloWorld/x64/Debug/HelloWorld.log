@@ -1,5 +1,30 @@
-﻿  EffectManager.cpp
-C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\HelloWorld\EffectManager.cpp(114,32): warning C4244:  '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\HelloWorld\EffectManager.cpp(154,30): warning C4244:  '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\HelloWorld\EffectManager.cpp(160,24): warning C4305:  '=': truncation from 'double' to 'float'
+﻿  Game.cpp
+C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\HelloWorld\Game.cpp(130,6): warning C4101:  'mapArray': unreferenced local variable
+C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\HelloWorld\Game.cpp(827,65): warning C4244:  '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\HelloWorld\Game.cpp(828,65): warning C4244:  '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\HelloWorld\Game.cpp(829,65): warning C4244:  '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\HelloWorld\Game.cpp(850,86): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\HelloWorld\Game.cpp(851,86): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\HelloWorld\Game.cpp(897,62): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\HelloWorld\Game.cpp(897,56): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\HelloWorld\Game.cpp(984,25): warning C4244:  '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\HelloWorld\Game.cpp(1013,55): warning C4244:  '+=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\HelloWorld\Game.cpp(1072,66): warning C4244:  'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\HelloWorld\Game.cpp(1072,57): warning C4244:  'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\HelloWorld\Game.cpp(1077,19): warning C4244:  '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\HelloWorld\Game.cpp(1085,24): warning C4244:  '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\HelloWorld\Game.cpp(1104,58): warning C4244:  '+=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\HelloWorld\Game.cpp(1136,12): warning C4244:  'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\HelloWorld\Game.cpp(1137,21): warning C4244:  '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\HelloWorld\Game.cpp(1139,12): warning C4244:  'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\HelloWorld\Game.cpp(1140,21): warning C4244:  '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\HelloWorld\Game.cpp(1180,12): warning C4244:  'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\HelloWorld\Game.cpp(1181,25): warning C4244:  '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\HelloWorld\Game.cpp(1184,12): warning C4244:  'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\HelloWorld\Game.cpp(1185,24): warning C4244:  '=': conversion from 'int' to 'float', possible loss of data
+  LINK : C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\x64\Debug\HelloWorld.exe not found or not built by the last incremental link; performing full link
+SOIL_ext.lib(etc1_utils.obj) : warning LNK4099: PDB 'soil2-debug.pdb' was not found with 'SOIL_ext.lib(etc1_utils.obj)' or at 'C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\x64\Debug\soil2-debug.pdb'; linking object as if no debug info
+SOIL_ext.lib(image_DXT.obj) : warning LNK4099: PDB 'soil2-debug.pdb' was not found with 'SOIL_ext.lib(image_DXT.obj)' or at 'C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\x64\Debug\soil2-debug.pdb'; linking object as if no debug info
+SOIL_ext.lib(image_helper.obj) : warning LNK4099: PDB 'soil2-debug.pdb' was not found with 'SOIL_ext.lib(image_helper.obj)' or at 'C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\x64\Debug\soil2-debug.pdb'; linking object as if no debug info
+SOIL_ext.lib(SOIL2.obj) : warning LNK4099: PDB 'soil2-debug.pdb' was not found with 'SOIL_ext.lib(SOIL2.obj)' or at 'C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\x64\Debug\soil2-debug.pdb'; linking object as if no debug info
   HelloWorld.vcxproj -> C:\Users\Andy\Documents\GDW\WorkingGame\AZG1\x64\Debug\HelloWorld.exe
