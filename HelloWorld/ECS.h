@@ -52,8 +52,6 @@ private:
 	static entt::registry* m_reg;
 };
 
-#endif // !__ECS_H__
-
 template<typename T>
 inline void ECS::AttachComponent(unsigned entity)
 {
@@ -82,3 +80,4 @@ inline void ECS::RemoveComponent(unsigned entity)
 	//Remove this component from the entity
 	m_reg->remove<T>(entity);
 }
+#endif // !__ECS_H__

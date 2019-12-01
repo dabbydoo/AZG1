@@ -2,7 +2,7 @@
 
 entt::registry* ECS::m_reg = nullptr;
 
-void ECS::AttachRegister(entt::registry * reg)
+void ECS::AttachRegister(entt::registry* reg)
 {
 	//Attach reference to the registry
 	m_reg = reg;
@@ -48,6 +48,8 @@ void ECS::SetIsMainCamera(unsigned entity, bool mainCamera)
 {
 	//Gets reference to the component
 	auto& id = GetComponent<EntityIdentifier>(entity);
+	//Sets main camera entity
+	EntityIdentifier::MainCamera(entity);
 	//Sets whether this entity is the main camera
 	id.SetIsMainCamera(mainCamera);
 }
@@ -56,6 +58,8 @@ void ECS::SetIsMainPlayer(unsigned entity, bool mainPlayer)
 {
 	//Gets reference to the component
 	auto& id = GetComponent<EntityIdentifier>(entity);
+	//Sets main player entity
+	EntityIdentifier::MainPlayer(entity);
 	//Sets whether this entity is the main player
 	id.SetIsMainPlayer(mainPlayer);
 }
