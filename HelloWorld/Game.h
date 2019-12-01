@@ -95,6 +95,8 @@ public:
 
 	void CreateBoss();
 
+	void UpdateBoss();
+
 	void ShadowEffect();
 
 	bool player_in_room();
@@ -131,6 +133,7 @@ private:
 	std::vector<Bullet> m_bulletList;
 	std::vector<Enemy>m_Bettle_spawn;
 	std::vector<Enemy>m_Lizard_spawn;
+	std::vector<Enemy>m_Boss_spawn;
 
 	//Bullet fire rate
 	int m_fireRate = 25;

@@ -150,6 +150,8 @@ void Game::Update()
 
 	UpdateLizard();
 
+	UpdateBoss();
+
 	
 	auto& animControllerr = ECS::GetComponent<AnimationController>(1);
 
@@ -183,6 +185,7 @@ void Game::Update()
 		animControllerr.SetActiveAnim(0);
 		UpdateBeetle();
 		UpdateLizard();
+		UpdateBoss();
 		if (BeetleNum < 2) {
 			CreateBeetle();
 
@@ -198,11 +201,12 @@ void Game::Update()
 		
 
 	}
-	if (m_xMap == 1 && m_yMap == 2 || m_xMap == 1 && m_yMap == 3 || m_xMap == 1 && m_yMap == 4) {
+	if (m_xMap == 1 && m_yMap == 3 || m_xMap == 1 && m_yMap == 4) {
 		//Load MiddleLeft
 		animControllerr.SetActiveAnim(3);
 		UpdateBeetle();
 		UpdateLizard();
+		UpdateBoss();
 		if (BeetleNum < 2) {
 			CreateBeetle();
 
@@ -218,11 +222,34 @@ void Game::Update()
 		OpenRight();
 		
 	}
+
+	if (m_xMap == 1 && m_yMap == 2) {
+		animControllerr.SetActiveAnim(3);
+		UpdateBeetle();
+		UpdateLizard();
+		UpdateBoss();
+		if (BeetleNum < 2) {
+			CreateBeetle();
+
+		}
+		if (LizardNum < 1) {
+			CreateLizard();
+		}
+		
+
+
+		CloseLeft();
+		OpenTop();
+		OpenBottom();
+		OpenRight();
+	}
+
 	if (m_xMap == 1 && m_yMap == 5) {
 		//Load BottomLeft
 		animControllerr.SetActiveAnim(6);
 		UpdateBeetle();
 		UpdateLizard();
+		UpdateBoss();
 		if (BeetleNum < 2) {
 			CreateBeetle();
 
@@ -243,6 +270,7 @@ void Game::Update()
 		animControllerr.SetActiveAnim(2);
 		UpdateBeetle();
 		UpdateLizard();
+		UpdateBoss();
 		if (BeetleNum < 2) {
 			CreateBeetle();
 
@@ -262,11 +290,12 @@ void Game::Update()
 		animControllerr.SetActiveAnim(5);
 		UpdateBeetle();
 		UpdateLizard();
+		UpdateBoss();
 		if (BeetleNum < 2) {
 			CreateBeetle();
 
 		}
-		if (LizardNum < 2) {
+		if (LizardNum < 1) {
 			CreateLizard();
 		}
 
@@ -281,11 +310,12 @@ void Game::Update()
 		animControllerr.SetActiveAnim(8);
 		UpdateBeetle();
 		UpdateLizard();
+		UpdateBoss();
 		if (BeetleNum < 2) {
 			CreateBeetle();
 
 		}
-		if (LizardNum < 1) {
+		if (LizardNum < 2) {
 			CreateLizard();
 		}
 
@@ -302,11 +332,12 @@ void Game::Update()
 		animControllerr.SetActiveAnim(1);
 		UpdateBeetle();
 		UpdateLizard();
+		UpdateBoss();
 		if (BeetleNum < 2) {
 			CreateBeetle();
-			
+
 		}
-		if (LizardNum < 1) {
+		if (LizardNum < 2) {
 			CreateLizard();
 		}
 
@@ -323,8 +354,9 @@ void Game::Update()
 		animControllerr.SetActiveAnim(4);
 		UpdateBeetle();
 		UpdateLizard();
+		UpdateBoss();
 		//UpdateBeetle();
-		if (BeetleNum < 1) {
+		if (BeetleNum < 2) {
 			CreateBeetle();
 
 		}
@@ -345,8 +377,12 @@ void Game::Update()
 		animControllerr.SetActiveAnim(7);
 		UpdateBeetle();
 		UpdateLizard();
-		if (BeetleNum < 1 && LizardNum < 1) {
+		UpdateBoss();
+		if (BeetleNum < 2) {
 			CreateBeetle();
+
+		}
+		if (LizardNum < 2) {
 			CreateLizard();
 		}
 
@@ -354,7 +390,9 @@ void Game::Update()
 		OpenTop();
 		OpenLeft();
 		OpenRight();
-		}
+	}
+	
+	
 
 
 
@@ -1199,6 +1237,41 @@ void Game::CreateBoss()
 	BossNum = 1;
 
 }
+
+
+void Game::UpdateBoss()
+{
+
+	for (int i = 0; i < m_Boss_spawn.size(); i++)
+	{
+		auto& animController = ECS::GetComponent<AnimationController>(m_Boss_spawn[i].EnemyID);
+
+		m_Boss_spawn[i].xPos += (m_Boss_spawn[i].xDir * 0.15);
+
+		ECS::GetComponent<Transform>(m_Boss_spawn[i].EnemyID).SetPositionX(m_Boss_spawn[i].xPos);
+		ECS::GetComponent<Transform>(m_Boss_spawn[i].EnemyID).SetPositionY(m_Boss_spawn[i].yPos);
+
+		if (m_Boss_spawn[i].xPos >= 135 || m_Boss_spawn[i].xPos <= -135) {
+
+			m_Boss_spawn[i].change = 1 - m_Boss_spawn[i].change;
+			m_Boss_spawn[i].xDir *= -1.f;
+			animController.SetActiveAnim(m_Boss_spawn[i].change);
+
+
+		}
+
+
+		if (!player_in_room()) {
+
+			ECS::DestroyEntity(m_Boss_spawn[i].EnemyID);
+			m_Boss_spawn.erase(m_Boss_spawn.begin() + i);
+
+			BossNum = 0;
+		}
+
+	}
+}
+
 
 
 void Game::ShadowEffect()
