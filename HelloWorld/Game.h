@@ -3,8 +3,8 @@
 
 #include "BackEnd.h"
 #include "HelloWorld.h"
+#include "Menu.h"
 #include "bullet.h"
-
 #include"Enemy_Class.h"
 
 //Our main class for running our game
@@ -98,6 +98,8 @@ public:
 	void ShadowEffect();
 
 	bool player_in_room();
+
+	void DestroyEntities();
 //	void Create_close_room();
 
 private:
@@ -115,6 +117,8 @@ private:
 	//Scenes
 	Scene* m_activeScene;
 	std::vector<Scene*> m_scenes;
+
+	int m_sceneID = 0;
 	
 	//Imgui stuff
 	bool m_guiActive = false;
@@ -129,6 +133,10 @@ private:
 
 	//Bullet
 	std::vector<Bullet> m_bulletList;
+	//Fireball
+	std::vector<Explosion> m_fireballList;
+
+	//Enemy
 	std::vector<Enemy>m_Bettle_spawn;
 	std::vector<Enemy>m_Lizard_spawn;
 
@@ -137,8 +145,6 @@ private:
 	int m_rateCounter = 0;
 	int m_FiringDir = 0;
 
-	//Fireball
-	std::vector<Explosion> m_fireballList;
 
 	//Room coord
 	int m_xMap = 3;
