@@ -55,9 +55,9 @@ void Game::InitGame()
 	m_window = BackEnd::GetWindow();
 
 	//Grabs the initialized window, whenever making a new scene
+	m_scenes.push_back(new Menu("Main Menu"));
 	m_scenes.push_back(new HelloWorld("Hello World"));
-	m_scenes.push_back(new Scene("First Loaded Scene"));
-
+	
 	//Sets active scene reference to our HelloWorld scene
 	//m_activeScene = m_scenes[0]; //Load the HelloWorld basic scene
 	m_activeScene = m_scenes[0]; //Load the first scene
@@ -87,7 +87,8 @@ bool Game::Run()
 		//Clear window with clearColor
 		m_window->Clear(m_clearColor);
 		//Updates the game
-		Update();
+			Update();
+		
 		//Draws the game
 		BackEnd::Draw(m_register);
 
@@ -100,13 +101,15 @@ bool Game::Run()
 		
 		//Polls events and then checks them
 		BackEnd::PollEvents(m_register, &m_close, &m_motion, &m_click, &m_wheel);
+		
 		CheckEvents();
+	
 		
 		//does the window have keyboard focus?
 		if (Input::m_windowFocus)
 		{
 			//Accept all input
-			AcceptInput();
+				AcceptInput();
 		}
 		
 	}
@@ -116,69 +119,52 @@ bool Game::Run()
 
 void Game::Update()
 {
-	
-	if (BossNum < 1 && m_xMap == 1 && m_yMap == 2)
+	if (m_sceneID == 1)
 	{
-		CreateBoss();
-	}
-	
-	else 
-	{
+		if (BossNum < 1 && m_xMap == 1 && m_yMap == 2)
+		{
+			CreateBoss();
+		}
 
-	}
+		else
+		{
 
-	int mapArray[5][5];
-	vec3 playerPos = m_register->get<Transform>(EntityIdentifier::MainPlayer()).GetPosition();
+		}
 
-	//walls	
-	//CloseTop();
-	//CloseRight();
-	//CloseLeft();
-	//CloseBottom();
-	//OpenTop();
-	//OpenBottom();
-	//OpenLeft();
-	//OpenRight();
+		int mapArray[5][5];
+		vec3 playerPos = m_register->get<Transform>(EntityIdentifier::MainPlayer()).GetPosition();
 
-	//Update bullet position
-	UpdateBullet();
+		//walls	
+		//CloseTop();
+		//CloseRight();
+		//CloseLeft();
+		//CloseBottom();
+		//OpenTop();
+		//OpenBottom();
+		//OpenLeft();
+		//OpenRight();
 
-	//Update Explosion
-	UpdateExplosion();
+		//Update bullet position
+		UpdateBullet();
 
-	UpdateBeetle();
+		//Update Explosion
+		UpdateExplosion();
 
-	UpdateLizard();
-
+<<<<<<< HEAD
 	UpdateBoss();
 
 	
 	auto& animControllerr = ECS::GetComponent<AnimationController>(1);
+=======
+		UpdateBeetle();
+>>>>>>> master
 
-	//Moving to the next room
-	if (playerPos.x > 190) {
-		CreateBeetle();
-		m_register->get<Transform>(EntityIdentifier::MainPlayer()).SetPositionX((playerPos.x = -190));
-		m_xMap += 1;
-	}
-	if (playerPos.y > 100) {
-		
-		m_register->get<Transform>(EntityIdentifier::MainPlayer()).SetPositionY((playerPos.y = -100));
-		m_yMap -= 1;
-	}
-	if (playerPos.x < -190) {
-		
-		m_register->get<Transform>(EntityIdentifier::MainPlayer()).SetPositionX((playerPos.x = 190));
-		m_xMap -= 1;
-	}
-	if (playerPos.y < -100) {
-		
-		m_register->get<Transform>(EntityIdentifier::MainPlayer()).SetPositionY((playerPos.y = 100));
-		m_yMap += 1;
-
-	}
+		UpdateLizard();
 
 
+		auto& animControllerr = ECS::GetComponent<AnimationController>(1);
+
+<<<<<<< HEAD
 	//Col 1
 	if (m_xMap == 1 && m_yMap == 1) {
 		//Load TopLeft
@@ -187,19 +173,30 @@ void Game::Update()
 		UpdateLizard();
 		UpdateBoss();
 		if (BeetleNum < 2) {
+=======
+		//Moving to the next room
+		if (playerPos.x > 190) {
+>>>>>>> master
 			CreateBeetle();
-
+			m_register->get<Transform>(EntityIdentifier::MainPlayer()).SetPositionX((playerPos.x = -190));
+			m_xMap += 1;
 		}
-		if (LizardNum < 1) {
-			CreateLizard();
+		if (playerPos.y > 100) {
+
+			m_register->get<Transform>(EntityIdentifier::MainPlayer()).SetPositionY((playerPos.y = -100));
+			m_yMap -= 1;
 		}
+		if (playerPos.x < -190) {
 
-		CloseTop();
-		CloseLeft();
-		OpenBottom();
-		OpenRight();
-		
+			m_register->get<Transform>(EntityIdentifier::MainPlayer()).SetPositionX((playerPos.x = 190));
+			m_xMap -= 1;
+		}
+		if (playerPos.y < -100) {
 
+			m_register->get<Transform>(EntityIdentifier::MainPlayer()).SetPositionY((playerPos.y = 100));
+			m_yMap += 1;
+
+<<<<<<< HEAD
 	}
 	if (m_xMap == 1 && m_yMap == 3 || m_xMap == 1 && m_yMap == 4) {
 		//Load MiddleLeft
@@ -252,18 +249,31 @@ void Game::Update()
 		UpdateBoss();
 		if (BeetleNum < 2) {
 			CreateBeetle();
-
-		}
-		if (LizardNum < 1) {
-			CreateLizard();
+=======
 		}
 
-		CloseLeft();
-		CloseBottom();
-		OpenTop();
-		OpenRight();
-		}
 
+		//Col 1
+		if (m_xMap == 1 && m_yMap == 1) {
+			//Load TopLeft
+			animControllerr.SetActiveAnim(0);
+			UpdateBeetle();
+			UpdateLizard();
+			if (BeetleNum < 2) {
+				CreateBeetle();
+>>>>>>> master
+
+			}
+			if (LizardNum < 1) {
+				CreateLizard();
+			}
+
+			CloseTop();
+			CloseLeft();
+			OpenBottom();
+			OpenRight();
+
+<<<<<<< HEAD
 	//Col 5
 	if (m_xMap == 5 && m_yMap == 1) {
 		//Load TopRight
@@ -273,12 +283,19 @@ void Game::Update()
 		UpdateBoss();
 		if (BeetleNum < 2) {
 			CreateBeetle();
+=======
+>>>>>>> master
 
 		}
-		if (LizardNum < 1) {
-			CreateLizard();
-		}
+		if (m_xMap == 1 && m_yMap == 2 || m_xMap == 1 && m_yMap == 3 || m_xMap == 1 && m_yMap == 4) {
+			//Load MiddleLeft
+			animControllerr.SetActiveAnim(3);
+			UpdateBeetle();
+			UpdateLizard();
+			if (BeetleNum < 2) {
+				CreateBeetle();
 
+<<<<<<< HEAD
 		CloseTop();
 		CloseRight();
 		OpenBottom();
@@ -317,15 +334,59 @@ void Game::Update()
 		}
 		if (LizardNum < 2) {
 			CreateLizard();
+=======
+			}
+			if (LizardNum < 1) {
+				CreateLizard();
+			}
+
+
+			CloseLeft();
+			OpenTop();
+			OpenBottom();
+			OpenRight();
+
+		}
+		if (m_xMap == 1 && m_yMap == 5) {
+			//Load BottomLeft
+			animControllerr.SetActiveAnim(6);
+			UpdateBeetle();
+			UpdateLizard();
+			if (BeetleNum < 2) {
+				CreateBeetle();
+
+			}
+			if (LizardNum < 1) {
+				CreateLizard();
+			}
+
+			CloseLeft();
+			CloseBottom();
+			OpenTop();
+			OpenRight();
+>>>>>>> master
 		}
 
-		CloseRight();
-		CloseBottom();
-		OpenTop();
-		OpenLeft();
-		
-	}
+		//Col 5
+		if (m_xMap == 5 && m_yMap == 1) {
+			//Load TopRight
+			animControllerr.SetActiveAnim(2);
+			UpdateBeetle();
+			UpdateLizard();
+			if (BeetleNum < 2) {
+				CreateBeetle();
 
+			}
+			if (LizardNum < 1) {
+				CreateLizard();
+			}
+
+			CloseTop();
+			CloseRight();
+			OpenBottom();
+			OpenLeft();
+
+<<<<<<< HEAD
 	//Top middle
 	if (m_xMap == 2 && m_yMap == 1 || m_xMap == 3 && m_yMap == 1|| m_xMap == 4 && m_yMap == 1) {
 		//Load TopMiddle
@@ -358,19 +419,49 @@ void Game::Update()
 		//UpdateBeetle();
 		if (BeetleNum < 2) {
 			CreateBeetle();
+=======
+		}
+		if (m_xMap == 5 && m_yMap == 2 || m_xMap == 5 && m_yMap == 3 || m_xMap == 5 && m_yMap == 4) {
+			//Load MiddleRight
+			animControllerr.SetActiveAnim(5);
+			UpdateBeetle();
+			UpdateLizard();
+			if (BeetleNum < 2) {
+				CreateBeetle();
+
+			}
+			if (LizardNum < 2) {
+				CreateLizard();
+			}
+
+			CloseRight();
+			OpenTop();
+			OpenBottom();
+			OpenLeft();
+>>>>>>> master
 
 		}
-		if (LizardNum < 1) {
-			CreateLizard();
-		}
-		
-		OpenTop();
-		OpenBottom();
-		OpenLeft();
-		OpenRight();
-		
-	}
+		if (m_xMap == 5 && m_yMap == 5) {
+			//Load BottomRight
+			animControllerr.SetActiveAnim(8);
+			UpdateBeetle();
+			UpdateLizard();
+			if (BeetleNum < 2) {
+				CreateBeetle();
 
+			}
+			if (LizardNum < 1) {
+				CreateLizard();
+			}
+
+			CloseRight();
+			CloseBottom();
+			OpenTop();
+			OpenLeft();
+
+		}
+
+<<<<<<< HEAD
 	//Bottom Middle
 	if (m_xMap == 2 && m_yMap == 5 || m_xMap == 3 && m_yMap == 5 || m_xMap == 4 && m_yMap == 5) {
 		//Load BottomMiddle
@@ -393,7 +484,68 @@ void Game::Update()
 	}
 	
 	
+=======
+		//Top middle
+		if (m_xMap == 2 && m_yMap == 1 || m_xMap == 3 && m_yMap == 1 || m_xMap == 4 && m_yMap == 1) {
+			//Load TopMiddle
+			animControllerr.SetActiveAnim(1);
+			UpdateBeetle();
+			UpdateLizard();
+			if (BeetleNum < 2) {
+				CreateBeetle();
 
+			}
+			if (LizardNum < 1) {
+				CreateLizard();
+			}
+
+			CloseTop();
+			OpenBottom();
+			OpenLeft();
+			OpenRight();
+		}
+
+		//Middle Middle
+		if (m_xMap == 2 && m_yMap == 2 || m_xMap == 2 && m_yMap == 3 || m_xMap == 2 && m_yMap == 4 || m_xMap == 3 && m_yMap == 2 || m_xMap == 3 && m_yMap == 3 || m_xMap == 3 && m_yMap == 4 || m_xMap == 4 && m_yMap == 2 || m_xMap == 4 && m_yMap == 3 || m_xMap == 4 && m_yMap == 4) {
+			//Load Middle
+		//	std::cout << "I am in the middle room"<<std::endl;
+			animControllerr.SetActiveAnim(4);
+			UpdateBeetle();
+			UpdateLizard();
+			//UpdateBeetle();
+			if (BeetleNum < 1) {
+				CreateBeetle();
+
+			}
+			if (LizardNum < 1) {
+				CreateLizard();
+			}
+
+			OpenTop();
+			OpenBottom();
+			OpenLeft();
+			OpenRight();
+
+		}
+>>>>>>> master
+
+		//Bottom Middle
+		if (m_xMap == 2 && m_yMap == 5 || m_xMap == 3 && m_yMap == 5 || m_xMap == 4 && m_yMap == 5) {
+			//Load BottomMiddle
+			animControllerr.SetActiveAnim(7);
+			UpdateBeetle();
+			UpdateLizard();
+			if (BeetleNum < 1 && LizardNum < 1) {
+				CreateBeetle();
+				CreateLizard();
+			}
+
+			CloseBottom();
+			OpenTop();
+			OpenLeft();
+			OpenRight();
+		}
+	}
 
 
 
@@ -427,8 +579,10 @@ void Game::CheckEvents()
 	//CreateBeetle();
 	//ShadowEffect();
 	
-	
-	EffectManager::CreateLighting();
+	if (m_sceneID == 1)
+	{
+		EffectManager::CreateLighting();
+	}
 
 	
 	
@@ -452,9 +606,11 @@ void Game::CheckEvents()
 void Game::AcceptInput()
 {
 	//Just calls all the other input functions 
+	
 	KeyboardHold();
 	KeyboardDown();
 	KeyboardUp();
+	
 
 	//Resets the key flags
 	//Must be done once per frame for input to work
@@ -464,93 +620,95 @@ void Game::AcceptInput()
 //Keys being press continuely
 void Game::KeyboardHold()
 {
-	//Keyboard button held
-	if (Input::GetKey(Key::F3))
+	if (m_sceneID == 1)
 	{
-		
-	}
-	if (Input::GetKey(Key::F4)){
-		printf("F4 Key Held\n");
-	}
-
-	auto& animControllerr = ECS::GetComponent<AnimationController>(2);
-	vec3 position = m_register->get<Transform>(EntityIdentifier::MainPlayer()).GetPosition();
-
-	float speed = 30.f;
-	//Keyboard button held
-	if (Input::GetKey(Key::W)) {
-		//m_register->get<Transform>(EntityIdentifier::MainPlayer()).SetPositionY(++position.y + (speed * Timer::deltaTime));
-		m_register->get<Transform>(EntityIdentifier::MainPlayer()).SetPositionY((position.y+0.25f) + (speed * Timer::deltaTime));
-	
-	}
-	if (Input::GetKey(Key::S)) {
-		//m_register->get<Transform>(EntityIdentifier::MainPlayer()).SetPositionY(--position.y - (speed * Timer::deltaTime));
-		m_register->get<Transform>(EntityIdentifier::MainPlayer()).SetPositionY((position.y - 0.25f) - (speed * Timer::deltaTime));
-		
-	}
-	if (Input::GetKey(Key::A)) {
-		//m_register->get<Transform>(EntityIdentifier::MainPlayer()).SetPositionX(--position.x - (speed * Timer::deltaTime));
-		m_register->get<Transform>(EntityIdentifier::MainPlayer()).SetPositionX((position.x - 0.25f) - (speed * Timer::deltaTime));
-	
-	}
-	if (Input::GetKey(Key::D)) {
-		//m_register->get<Transform>(EntityIdentifier::MainPlayer()).SetPositionX(++position.x + (speed * Timer::deltaTime));
-		m_register->get<Transform>(EntityIdentifier::MainPlayer()).SetPositionX((position.x + 0.25f) + (speed * Timer::deltaTime));
-		
-		/*
-		HelloWorld* scene = (HelloWorld*)m_activeScene;
-		auto entitySpaceRanger = scene->SpaceRanger();
-		auto& animControllerr = ECS::GetComponent<AnimationController>(entitySpaceRanger);
-		animControllerr.SetActiveAnim(3);
-		auto& anim = animControllerr.GetAnimation(3);
-		*/
-	}
-	if ((Input::GetKey(Key::UpArrow)) && (m_FiringDir == 1)) {
-		m_rateCounter++;
-		
-		animControllerr.SetActiveAnim(1);
-
-		if (m_rateCounter > m_fireRate)
+		//Keyboard button held
+		if (Input::GetKey(Key::F3))
 		{
-			CreateBullet(0, 1);
-			m_rateCounter = 0;
+
 		}
-	
-	}
-
-	if ((Input::GetKey(Key::RightArrow)) && (m_FiringDir == 2)) {
-		m_rateCounter++;
-		
-		animControllerr.SetActiveAnim(3);
-		if (m_rateCounter > m_fireRate)
-		{
-			CreateBullet(1, 0);
-			m_rateCounter = 0;
+		if (Input::GetKey(Key::F4)) {
+			printf("F4 Key Held\n");
 		}
-	}
 
-	if ((Input::GetKey(Key::DownArrow)) && (m_FiringDir == 3)) {
-		m_rateCounter++;
-		animControllerr.SetActiveAnim(0);
-		if (m_rateCounter > m_fireRate)
-		{
-			CreateBullet(0, -1);
-			m_rateCounter = 0;
+		auto& animControllerr = ECS::GetComponent<AnimationController>(2);
+		vec3 position = m_register->get<Transform>(EntityIdentifier::MainPlayer()).GetPosition();
+
+		float speed = 30.f;
+		//Keyboard button held
+		if (Input::GetKey(Key::W)) {
+			//m_register->get<Transform>(EntityIdentifier::MainPlayer()).SetPositionY(++position.y + (speed * Timer::deltaTime));
+			m_register->get<Transform>(EntityIdentifier::MainPlayer()).SetPositionY((position.y + 0.25f) + (speed * Timer::deltaTime));
+
 		}
-		
-	}
+		if (Input::GetKey(Key::S)) {
+			//m_register->get<Transform>(EntityIdentifier::MainPlayer()).SetPositionY(--position.y - (speed * Timer::deltaTime));
+			m_register->get<Transform>(EntityIdentifier::MainPlayer()).SetPositionY((position.y - 0.25f) - (speed * Timer::deltaTime));
 
-	if ((Input::GetKey(Key::LeftArrow)) && (m_FiringDir == 4)) {
-		m_rateCounter++;
-		animControllerr.SetActiveAnim(2);
-		if (m_rateCounter > m_fireRate)
-		{
-			CreateBullet(-1, 0);
-			m_rateCounter = 0;
-		}		
+		}
+		if (Input::GetKey(Key::A)) {
+			//m_register->get<Transform>(EntityIdentifier::MainPlayer()).SetPositionX(--position.x - (speed * Timer::deltaTime));
+			m_register->get<Transform>(EntityIdentifier::MainPlayer()).SetPositionX((position.x - 0.25f) - (speed * Timer::deltaTime));
+
+		}
+		if (Input::GetKey(Key::D)) {
+			//m_register->get<Transform>(EntityIdentifier::MainPlayer()).SetPositionX(++position.x + (speed * Timer::deltaTime));
+			m_register->get<Transform>(EntityIdentifier::MainPlayer()).SetPositionX((position.x + 0.25f) + (speed * Timer::deltaTime));
+
+			/*
+			HelloWorld* scene = (HelloWorld*)m_activeScene;
+			auto entitySpaceRanger = scene->SpaceRanger();
+			auto& animControllerr = ECS::GetComponent<AnimationController>(entitySpaceRanger);
+			animControllerr.SetActiveAnim(3);
+			auto& anim = animControllerr.GetAnimation(3);
+			*/
+		}
+		if ((Input::GetKey(Key::UpArrow)) && (m_FiringDir == 1)) {
+			m_rateCounter++;
+
+			animControllerr.SetActiveAnim(1);
+
+			if (m_rateCounter > m_fireRate)
+			{
+				CreateBullet(0, 1);
+				m_rateCounter = 0;
+			}
+
+		}
+
+		if ((Input::GetKey(Key::RightArrow)) && (m_FiringDir == 2)) {
+			m_rateCounter++;
+
+			animControllerr.SetActiveAnim(3);
+			if (m_rateCounter > m_fireRate)
+			{
+				CreateBullet(1, 0);
+				m_rateCounter = 0;
+			}
+		}
+
+		if ((Input::GetKey(Key::DownArrow)) && (m_FiringDir == 3)) {
+			m_rateCounter++;
+			animControllerr.SetActiveAnim(0);
+			if (m_rateCounter > m_fireRate)
+			{
+				CreateBullet(0, -1);
+				m_rateCounter = 0;
+			}
+
+		}
+
+		if ((Input::GetKey(Key::LeftArrow)) && (m_FiringDir == 4)) {
+			m_rateCounter++;
+			animControllerr.SetActiveAnim(2);
+			if (m_rateCounter > m_fireRate)
+			{
+				CreateBullet(-1, 0);
+				m_rateCounter = 0;
+			}
+		}
+		//m_register->get<Transform>(EntityIdentifier::MainPlayer()).SetPositionX(position.x);
 	}
-	//m_register->get<Transform>(EntityIdentifier::MainPlayer()).SetPositionX(position.x);
-	
 
 	
 
@@ -559,71 +717,76 @@ void Game::KeyboardHold()
 //Keys being pressed once
 void Game::KeyboardDown()
 {
-	//Keyboard button down
-	/*if (Input::GetKeyDown(Key::UpArrow))
+	if (m_sceneID == 1)
 	{
-		HelloWorld* scene = (HelloWorld*)m_activeScene;
-		auto entitySpaceRanger = scene->bullet();
-		auto& animControllerr = ECS::GetComponent<AnimationController>(entitySpaceRanger);
 
-		vec3 bulletposition = m_register->get<Transform>(entitySpaceRanger).GetPosition();
-		m_register->get<Transform>(entitySpaceRanger).SetPosition(bulletposition);
-	}*/
+		/*if (Input::GetKeyDown(Key::Escape))
+		{
+			//DestroyEntities();
 
-	if (Input::GetKeyDown(Key::F4))
-	{
-		printf("F4 Key Down\n");
-	}
+			m_sceneID = 0;
 
-	
-	auto& animControllerr = ECS::GetComponent<AnimationController>(2);
+			m_activeScene = m_scenes[m_sceneID];
 
-	if (Input::GetKeyDown(Key::A))
-	{
-		
-		printf("A Key Down\n");
-		//animControllerr.SetActiveAnim(2);
-		
-	}
-	
-	if (Input::GetKeyDown(Key::W))
-	{
-		printf("W Key Down\n");
-		//animControllerr.SetActiveAnim(1);
+			m_activeScene->InitScene(float(BackEnd::GetWindowWidth()), float(BackEnd::GetWindowHeight()));
 
-	}if (Input::GetKeyDown(Key::S))
-	{
-		printf("S Key Down\n");
-		//animControllerr.SetActiveAnim(0);
-	}
-	if (Input::GetKeyDown(Key::D))
-	{
-		printf("D Key Down\n");
-		printf("o");
-		//animControllerr.SetActiveAnim(3);
-	}
+			m_register = m_activeScene->GetScene();
+		}*/
 
-	//Bullet
-	if (Input::GetKeyDown(Key::UpArrow))
-	{
+		if (Input::GetKeyDown(Key::F4))
+		{
+			printf("F4 Key Down\n");
+		}
+
+
+		auto& animControllerr = ECS::GetComponent<AnimationController>(2);
+
+		if (Input::GetKeyDown(Key::A))
+		{
+
+			printf("A Key Down\n");
+			//animControllerr.SetActiveAnim(2);
+
+		}
+
+		if (Input::GetKeyDown(Key::W))
+		{
+			printf("W Key Down\n");
+			//animControllerr.SetActiveAnim(1);
+
+		}if (Input::GetKeyDown(Key::S))
+		{
+			printf("S Key Down\n");
+			//animControllerr.SetActiveAnim(0);
+		}
+		if (Input::GetKeyDown(Key::D))
+		{
+			printf("D Key Down\n");
+			printf("o");
+			//animControllerr.SetActiveAnim(3);
+		}
+
+		//Bullet
+		if (Input::GetKeyDown(Key::UpArrow))
+		{
 			m_FiringDir = 1;
-	}
+		}
 
-	if (Input::GetKeyDown(Key::RightArrow))
-	{
+		if (Input::GetKeyDown(Key::RightArrow))
+		{
 			m_FiringDir = 2;
-	}
+		}
 
-	if (Input::GetKeyDown(Key::DownArrow))
-	{
+		if (Input::GetKeyDown(Key::DownArrow))
+		{
 			m_FiringDir = 3;
-	}
+		}
 
-	if (Input::GetKeyDown(Key::LeftArrow))
-	{
+		if (Input::GetKeyDown(Key::LeftArrow))
+		{
 			m_FiringDir = 4;
+		}
 	}
-
 
 	
 }
@@ -685,7 +848,20 @@ void Game::MouseClick(SDL_MouseButtonEvent evnt)
 {
 	if (SDL_GetMouseState(NULL, NULL) & SDL_BUTTON(SDL_BUTTON_LEFT)) 
 	{
-		printf("Left Mouse Button Clicked at (% f, % f)\n", float(evnt.x), float(evnt.y));
+		float xPos = float(evnt.x) / float(BackEnd::GetWindowWidth());
+		float yPos = float(evnt.y) / float(BackEnd::GetWindowHeight());
+
+		printf("Left Mouse Button Clicked at (% f, % f)\n", float(evnt.x) / float(BackEnd::GetWindowWidth()), float(evnt.y) / float(BackEnd::GetWindowHeight()));
+		if (xPos >= 0.18 && xPos <= 0.84 && yPos >= 0.56 && yPos <= 0.79 && m_sceneID == 0)
+		{
+			m_sceneID = 1;
+
+			m_activeScene = m_scenes[m_sceneID]; 
+
+			m_activeScene->InitScene(float(BackEnd::GetWindowWidth()), float(BackEnd::GetWindowHeight()));
+
+			m_register = m_activeScene->GetScene();
+		}
 	}
 
 	if (SDL_GetMouseState(NULL, NULL) & SDL_BUTTON(SDL_BUTTON_RIGHT))
@@ -1030,6 +1206,7 @@ void Game::CreateBeetle()
 
 		m_Bettle_spawn.push_back(Beetle);
 
+		
 		//Setup up the Identifier
 		unsigned int bitHolder = EntityIdentifier::SpriteBit() | EntityIdentifier::TransformBit() | EntityIdentifier::AnimationBit();
 		ECS::SetUpIdentifier(entityB, bitHolder, "Beetle Enemy");
@@ -1294,6 +1471,33 @@ bool Game::player_in_room()
 	
 	else
 	return true;
+}
+
+void Game::DestroyEntities()
+{
+	for (int i = 0; i < m_bulletList.size(); i++)
+	{
+			ECS::DestroyEntity(m_bulletList[i].bulletID);
+			m_bulletList.erase(m_bulletList.begin() + i);
+	}
+
+	for (int i = 0; i < m_Bettle_spawn.size(); i++)
+	{
+		ECS::DestroyEntity(m_Bettle_spawn[i].EnemyID);
+		m_Bettle_spawn.erase(m_Bettle_spawn.begin() + i);
+	}
+
+	for (int i = 0; i < m_fireballList.size(); i++)
+	{
+		ECS::DestroyEntity(m_fireballList[i].explosionID);
+		m_fireballList.erase(m_fireballList.begin() + i);
+	}
+
+	for (int i = 0; i < m_Lizard_spawn.size(); i++)
+	{
+		ECS::DestroyEntity(m_Lizard_spawn[i].EnemyID);
+		m_Lizard_spawn.erase(m_Lizard_spawn.begin() + i);
+	}
 }
 
 
