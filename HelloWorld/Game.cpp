@@ -1020,6 +1020,7 @@ void Game::CreateBeetle()
 
 		m_Bettle_spawn.push_back(Beetle);
 
+		
 		//Setup up the Identifier
 		unsigned int bitHolder = EntityIdentifier::SpriteBit() | EntityIdentifier::TransformBit() | EntityIdentifier::AnimationBit();
 		ECS::SetUpIdentifier(entityB, bitHolder, "Beetle Enemy");
